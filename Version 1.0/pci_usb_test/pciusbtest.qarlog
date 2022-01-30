@@ -1,0 +1,47 @@
+Quartus II Archive log --	C:/altera_projects/pci_usb_test/pciusbtest.qarlog
+
+Archive:	C:/altera_projects/pci_usb_test/pciusbtest.qar
+Date:		Sat Jun 23 19:01:04 2018
+Quartus II 32-bit		13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/altera_projects/pci_usb_test/Block1.v
+C:/altera_projects/pci_usb_test/PCIMUX.bsf
+C:/altera_projects/pci_usb_test/PCIMUX.v
+C:/altera_projects/pci_usb_test/PCIMUX_bb.v
+C:/altera_projects/pci_usb_test/altpll0.bsf
+C:/altera_projects/pci_usb_test/altpll0.ppf
+C:/altera_projects/pci_usb_test/altpll0.qip
+C:/altera_projects/pci_usb_test/altpll0.v
+C:/altera_projects/pci_usb_test/altpll0_bb.v
+C:/altera_projects/pci_usb_test/com_controller.v
+C:/altera_projects/pci_usb_test/incremental_db/compiled_partitions/pciusbtest.db_info
+C:/altera_projects/pci_usb_test/lpm_counter0.bsf
+C:/altera_projects/pci_usb_test/lpm_counter0.qip
+C:/altera_projects/pci_usb_test/lpm_counter0.v
+C:/altera_projects/pci_usb_test/lpm_counter0_bb.v
+C:/altera_projects/pci_usb_test/lpt_controller.v
+C:/altera_projects/pci_usb_test/output_files/Chain1.cdf
+C:/altera_projects/pci_usb_test/output_files/Chain2.cdf
+C:/altera_projects/pci_usb_test/output_files/Chain3.cdf
+C:/altera_projects/pci_usb_test/output_files/Chain5.cdf
+C:/altera_projects/pci_usb_test/output_files/Chain6.cdf
+C:/altera_projects/pci_usb_test/output_files/Chain7.cdf
+C:/altera_projects/pci_usb_test/output_files/stp1.stp
+C:/altera_projects/pci_usb_test/output_files/stp2.stp
+C:/altera_projects/pci_usb_test/pci_constraints_for_pci_sample.tcl
+C:/altera_projects/pci_usb_test/pci_controller.v
+C:/altera_projects/pci_usb_test/pci_io.v
+C:/altera_projects/pci_usb_test/pcimux.qip
+C:/altera_projects/pci_usb_test/pciusbtest.out.sdc
+C:/altera_projects/pci_usb_test/pciusbtest.qpf
+C:/altera_projects/pci_usb_test/pciusbtest.qsf
+C:/altera_projects/pci_usb_test/pciusbtest.sdc
+C:/altera_projects/pci_usb_test/pciusbtest_assignment_defaults.qdf
+C:/altera_projects/pci_usb_test/simulation/modelsim/Block1.vt
+C:/altera_projects/pci_usb_test/stp1.stp
+C:/altera_projects/pci_usb_test/stp1_auto_stripped.stp
+	======= Total: 36 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -1,0 +1,1319 @@
+Analysis & Synthesis report for pci_com_lpt_usb_eth
+Tue Oct 16 05:47:11 2018
+Quartus II Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. Analysis & Synthesis RAM Summary
+  8. State Machine - |pci_com_lpt_usb_eth|pci_controller:b2v_inst1|ST
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Registers Packed Into Inferred Megafunctions
+ 13. Source assignments for com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0
+ 14. Source assignments for com_controller:b2v_inst|lpm_counter:fifo_tx_waddr_rtl_1
+ 15. Source assignments for com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2
+ 16. Source assignments for com_controller:b2v_inst|lpm_counter:fifo_rx_itrig_cntr_rtl_3
+ 17. Source assignments for com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4
+ 18. Source assignments for com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5
+ 19. Source assignments for com_controller:b2v_inst|lpm_add_sub:Add1|addcore:adder
+ 20. Source assignments for com_controller:b2v_inst|lpm_add_sub:Add2|addcore:adder
+ 21. Parameter Settings for User Entity Instance: pci_controller:b2v_inst1
+ 22. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0
+ 23. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_tx_waddr_rtl_1
+ 24. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2
+ 25. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_rx_itrig_cntr_rtl_3
+ 26. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4
+ 27. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5
+ 28. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|altdpram:FIFO_TX_COM1_rtl_6
+ 29. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_add_sub:Add1
+ 30. Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_add_sub:Add2
+ 31. Port Connectivity Checks: "com_controller:b2v_inst"
+ 32. Analysis & Synthesis Messages
+ 33. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                               ;
++-----------------------------+----------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Tue Oct 16 05:47:11 2018        ;
+; Quartus II Version          ; 9.0 Build 184 04/29/2009 SP 1 SJ Web Edition ;
+; Revision Name               ; pci_com_lpt_usb_eth                          ;
+; Top-level Entity Name       ; pci_com_lpt_usb_eth                          ;
+; Family                      ; FLEX10KE                                     ;
+; Total logic elements        ; 1,168                                        ;
+; Total pins                  ; 57                                           ;
+; Total memory bits           ; 128                                          ;
+; Total PLLs                  ; 0                                            ;
++-----------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                            ;
++--------------------------------------------------------------+---------------------+---------------------+
+; Option                                                       ; Setting             ; Default Value       ;
++--------------------------------------------------------------+---------------------+---------------------+
+; Device                                                       ; EPF10K200SRC240-3   ;                     ;
+; Top-level entity name                                        ; pci_com_lpt_usb_eth ; pci_com_lpt_usb_eth ;
+; Family name                                                  ; FLEX10KE            ; Stratix II          ;
+; Use Generated Physical Constraints File                      ; Off                 ;                     ;
+; Use smart compilation                                        ; Off                 ; Off                 ;
+; Create Debugging Nodes for IP Cores                          ; Off                 ; Off                 ;
+; Preserve fewer node names                                    ; On                  ; On                  ;
+; Disable OpenCore Plus hardware evaluation                    ; Off                 ; Off                 ;
+; Verilog Version                                              ; Verilog_2001        ; Verilog_2001        ;
+; VHDL Version                                                 ; VHDL93              ; VHDL93              ;
+; State Machine Processing                                     ; Auto                ; Auto                ;
+; Safe State Machine                                           ; Off                 ; Off                 ;
+; Extract Verilog State Machines                               ; On                  ; On                  ;
+; Extract VHDL State Machines                                  ; On                  ; On                  ;
+; Ignore Verilog initial constructs                            ; Off                 ; Off                 ;
+; Iteration limit for constant Verilog loops                   ; 5000                ; 5000                ;
+; Iteration limit for non-constant Verilog loops               ; 250                 ; 250                 ;
+; Add Pass-Through Logic to Inferred RAMs                      ; On                  ; On                  ;
+; Parallel Synthesis                                           ; Off                 ; Off                 ;
+; NOT Gate Push-Back                                           ; On                  ; On                  ;
+; Power-Up Don't Care                                          ; On                  ; On                  ;
+; Remove Redundant Logic Cells                                 ; Off                 ; Off                 ;
+; Remove Duplicate Registers                                   ; On                  ; On                  ;
+; Ignore CARRY Buffers                                         ; Off                 ; Off                 ;
+; Ignore CASCADE Buffers                                       ; Off                 ; Off                 ;
+; Ignore GLOBAL Buffers                                        ; Off                 ; Off                 ;
+; Ignore ROW GLOBAL Buffers                                    ; Off                 ; Off                 ;
+; Ignore LCELL Buffers                                         ; Off                 ; Off                 ;
+; Ignore SOFT Buffers                                          ; On                  ; On                  ;
+; Limit AHDL Integers to 32 Bits                               ; Off                 ; Off                 ;
+; Auto Implement in ROM                                        ; Off                 ; Off                 ;
+; Optimization Technique                                       ; Area                ; Area                ;
+; Carry Chain Length                                           ; 32                  ; 32                  ;
+; Cascade Chain Length                                         ; 2                   ; 2                   ;
+; Auto Carry Chains                                            ; On                  ; On                  ;
+; Auto Open-Drain Pins                                         ; On                  ; On                  ;
+; Auto ROM Replacement                                         ; On                  ; On                  ;
+; Auto RAM Replacement                                         ; On                  ; On                  ;
+; Auto Clock Enable Replacement                                ; On                  ; On                  ;
+; Strict RAM Replacement                                       ; Off                 ; Off                 ;
+; Auto Resource Sharing                                        ; Off                 ; Off                 ;
+; Allow Any RAM Size For Recognition                           ; Off                 ; Off                 ;
+; Allow Any ROM Size For Recognition                           ; Off                 ; Off                 ;
+; Use LogicLock Constraints during Resource Balancing          ; On                  ; On                  ;
+; Ignore translate_off and synthesis_off directives            ; Off                 ; Off                 ;
+; Show Parameter Settings Tables in Synthesis Report           ; On                  ; On                  ;
+; HDL message level                                            ; Level2              ; Level2              ;
+; Suppress Register Optimization Related Messages              ; Off                 ; Off                 ;
+; Number of Removed Registers Reported in Synthesis Report     ; 100                 ; 100                 ;
+; Number of Inverted Registers Reported in Synthesis Report    ; 100                 ; 100                 ;
+; Block Design Naming                                          ; Auto                ; Auto                ;
+; Synthesis Effort                                             ; Auto                ; Auto                ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal ; On                  ; On                  ;
+; Analysis & Synthesis Message Level                           ; Medium              ; Medium              ;
++--------------------------------------------------------------+---------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                            ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+
+; pci_com_lpt_usb_eth.v            ; yes             ; User Verilog HDL File  ; C:/altera/90sp1/quartus/pci_com_lpt_usb_eth/pci_com_lpt_usb_eth.v       ;
+; pci_controller.v                 ; yes             ; User Verilog HDL File  ; C:/altera/90sp1/quartus/pci_com_lpt_usb_eth/pci_controller.v            ;
+; com_controller.v                 ; yes             ; User Verilog HDL File  ; C:/altera/90sp1/quartus/pci_com_lpt_usb_eth/com_controller.v            ;
+; lpm_counter.tdf                  ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_counter.tdf         ;
+; lpm_constant.inc                 ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_constant.inc        ;
+; lpm_decode.inc                   ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_decode.inc          ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_add_sub.inc         ;
+; cmpconst.inc                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/cmpconst.inc            ;
+; lpm_compare.inc                  ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_compare.inc         ;
+; lpm_counter.inc                  ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_counter.inc         ;
+; dffeea.inc                       ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/dffeea.inc              ;
+; alt_synch_counter.inc            ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_synch_counter.inc   ;
+; alt_synch_counter_f.inc          ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_synch_counter_f.inc ;
+; alt_counter_f10ke.inc            ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_counter_f10ke.inc   ;
+; alt_counter_stratix.inc          ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_counter_stratix.inc ;
+; aglobal90.inc                    ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/aglobal90.inc           ;
+; alt_counter_f10ke.tdf            ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_counter_f10ke.tdf   ;
+; flex10ke_lcell.inc               ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/flex10ke_lcell.inc      ;
+; altdpram.tdf                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/altdpram.tdf            ;
+; memmodes.inc                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/others/maxplus2/memmodes.inc          ;
+; lpm_mux.inc                      ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_mux.inc             ;
+; a_hdffe.inc                      ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/a_hdffe.inc             ;
+; a_rdenreg.inc                    ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/a_rdenreg.inc           ;
+; altqpram.inc                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/altqpram.inc            ;
+; alt_le_rden_reg.inc              ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_le_rden_reg.inc     ;
+; altsyncram.inc                   ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/altsyncram.inc          ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;
+; addcore.inc                      ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/addcore.inc             ;
+; look_add.inc                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/look_add.inc            ;
+; bypassff.inc                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/bypassff.inc            ;
+; altshift.inc                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/altshift.inc            ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;
+; alt_mercury_add_sub.inc          ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/alt_mercury_add_sub.inc ;
+; addcore.tdf                      ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/addcore.tdf             ;
+; a_csnbuffer.inc                  ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/a_csnbuffer.inc         ;
+; a_csnbuffer.tdf                  ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/a_csnbuffer.tdf         ;
+; altshift.tdf                     ; yes             ; Megafunction           ; c:/altera/90sp1/quartus/libraries/megafunctions/altshift.tdf            ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+
+
+
++----------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary  ;
++-----------------------------------+----------+
+; Resource                          ; Usage    ;
++-----------------------------------+----------+
+; Total logic elements              ; 1168     ;
+; Total combinational functions     ; 1115     ;
+;     -- Total 4-input functions    ; 548      ;
+;     -- Total 3-input functions    ; 264      ;
+;     -- Total 2-input functions    ; 221      ;
+;     -- Total 1-input functions    ; 69       ;
+;     -- Total 0-input functions    ; 13       ;
+; Total registers                   ; 494      ;
+; Total logic cells in carry chains ; 68       ;
+; I/O pins                          ; 57       ;
+; Total memory bits                 ; 128      ;
+; Maximum fan-out node              ; _I_RESET ;
+; Maximum fan-out                   ; 352      ;
+; Total fan-out                     ; 4919     ;
+; Average fan-out                   ; 3.99     ;
++-----------------------------------+----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                   ;
++----------------------------------------------+-------------+--------------+-------------+------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; Logic Cells ; LC Registers ; Memory Bits ; Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                              ; Library Name ;
++----------------------------------------------+-------------+--------------+-------------+------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------+--------------+
+; |pci_com_lpt_usb_eth                         ; 1168 (16)   ; 494          ; 128         ; 57   ; 674 (16)     ; 53 (0)            ; 441 (0)          ; 68 (0)          ; 0 (0)      ; |pci_com_lpt_usb_eth                                                                                             ; work         ;
+;    |com_controller:b2v_inst|                 ; 635 (562)   ; 303          ; 128         ; 0    ; 332 (285)    ; 47 (47)           ; 256 (230)        ; 68 (2)          ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst                                                                     ; work         ;
+;       |altdpram:FIFO_TX_COM1_rtl_6|          ; 0 (0)       ; 0            ; 128         ; 0    ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|altdpram:FIFO_TX_COM1_rtl_6                                         ; work         ;
+;       |lpm_add_sub:Add1|                     ; 20 (0)      ; 0            ; 0           ; 0    ; 20 (0)       ; 0 (0)             ; 0 (0)            ; 20 (0)          ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add1                                                    ; work         ;
+;          |addcore:adder|                     ; 20 (1)      ; 0            ; 0           ; 0    ; 20 (1)       ; 0 (0)             ; 0 (0)            ; 20 (1)          ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add1|addcore:adder                                      ; work         ;
+;             |a_csnbuffer:result_node|        ; 19 (19)     ; 0            ; 0           ; 0    ; 19 (19)      ; 0 (0)             ; 0 (0)            ; 19 (19)         ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add1|addcore:adder|a_csnbuffer:result_node              ; work         ;
+;       |lpm_add_sub:Add2|                     ; 20 (0)      ; 0            ; 0           ; 0    ; 20 (0)       ; 0 (0)             ; 0 (0)            ; 20 (0)          ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add2                                                    ; work         ;
+;          |addcore:adder|                     ; 20 (1)      ; 0            ; 0           ; 0    ; 20 (1)       ; 0 (0)             ; 0 (0)            ; 20 (1)          ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add2|addcore:adder                                      ; work         ;
+;             |a_csnbuffer:result_node|        ; 19 (19)     ; 0            ; 0           ; 0    ; 19 (19)      ; 0 (0)             ; 0 (0)            ; 19 (19)         ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add2|addcore:adder|a_csnbuffer:result_node              ; work         ;
+;       |lpm_counter:fifo_rx_itrig_cntr_rtl_3| ; 5 (0)       ; 4            ; 0           ; 0    ; 1 (0)        ; 0 (0)             ; 4 (0)            ; 4 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_rx_itrig_cntr_rtl_3                                ; work         ;
+;          |alt_counter_f10ke:wysi_counter|    ; 5 (5)       ; 4            ; 0           ; 0    ; 1 (1)        ; 0 (0)             ; 4 (4)            ; 4 (4)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_rx_itrig_cntr_rtl_3|alt_counter_f10ke:wysi_counter ; work         ;
+;       |lpm_counter:fifo_rx_raddr_rtl_5|      ; 7 (0)       ; 4            ; 0           ; 0    ; 3 (0)        ; 0 (0)             ; 4 (0)            ; 4 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5                                     ; work         ;
+;          |alt_counter_f10ke:wysi_counter|    ; 7 (7)       ; 4            ; 0           ; 0    ; 3 (3)        ; 0 (0)             ; 4 (4)            ; 4 (4)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5|alt_counter_f10ke:wysi_counter      ; work         ;
+;       |lpm_counter:fifo_rx_waddr_rtl_4|      ; 4 (0)       ; 4            ; 0           ; 0    ; 0 (0)        ; 0 (0)             ; 4 (0)            ; 4 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4                                     ; work         ;
+;          |alt_counter_f10ke:wysi_counter|    ; 4 (4)       ; 4            ; 0           ; 0    ; 0 (0)        ; 0 (0)             ; 4 (4)            ; 4 (4)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4|alt_counter_f10ke:wysi_counter      ; work         ;
+;       |lpm_counter:fifo_tx_raddr_rtl_0|      ; 5 (0)       ; 4            ; 0           ; 0    ; 1 (0)        ; 0 (0)             ; 4 (0)            ; 4 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0                                     ; work         ;
+;          |alt_counter_f10ke:wysi_counter|    ; 5 (5)       ; 4            ; 0           ; 0    ; 1 (1)        ; 0 (0)             ; 4 (4)            ; 4 (4)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0|alt_counter_f10ke:wysi_counter      ; work         ;
+;       |lpm_counter:fifo_tx_waddr_rtl_1|      ; 5 (0)       ; 4            ; 0           ; 0    ; 1 (0)        ; 0 (0)             ; 4 (0)            ; 4 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_tx_waddr_rtl_1                                     ; work         ;
+;          |alt_counter_f10ke:wysi_counter|    ; 5 (5)       ; 4            ; 0           ; 0    ; 1 (1)        ; 0 (0)             ; 4 (4)            ; 4 (4)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:fifo_tx_waddr_rtl_1|alt_counter_f10ke:wysi_counter      ; work         ;
+;       |lpm_counter:rx_timeout_cntr_rtl_2|    ; 7 (0)       ; 6            ; 0           ; 0    ; 1 (0)        ; 0 (0)             ; 6 (0)            ; 6 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2                                   ; work         ;
+;          |alt_counter_f10ke:wysi_counter|    ; 7 (7)       ; 6            ; 0           ; 0    ; 1 (1)        ; 0 (0)             ; 6 (6)            ; 6 (6)           ; 0 (0)      ; |pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2|alt_counter_f10ke:wysi_counter    ; work         ;
+;    |pci_controller:b2v_inst1|                ; 517 (517)   ; 191          ; 0           ; 0    ; 326 (326)    ; 6 (6)             ; 185 (185)        ; 0 (0)           ; 0 (0)      ; |pci_com_lpt_usb_eth|pci_controller:b2v_inst1                                                                    ; work         ;
++----------------------------------------------+-------------+--------------+-------------+------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                  ;
++-------------------------------------------------------------+-----------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                        ; Mode      ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-------------------------------------------------------------+-----------+--------------+--------------+--------------+--------------+------+------+
+; com_controller:b2v_inst|altdpram:FIFO_TX_COM1_rtl_6|content ; Dual Port ; 16           ; 8            ; 16           ; 8            ; 128  ; none ;
++-------------------------------------------------------------+-----------+--------------+--------------+--------------+--------------+------+------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |pci_com_lpt_usb_eth|pci_controller:b2v_inst1|ST                                                         ;
++---------------+---------------+---------------+--------------+---------------+--------------+---------------+------------+
+; Name          ; ST.ST_SUSTAIN ; ST.ST_WRITEIO ; ST.ST_READIO ; ST.ST_WRITECS ; ST.ST_READCS ; ST.ST_DECODED ; ST.ST_IDLE ;
++---------------+---------------+---------------+--------------+---------------+--------------+---------------+------------+
+; ST.ST_IDLE    ; 0             ; 0             ; 0            ; 0             ; 0            ; 0             ; 0          ;
+; ST.ST_DECODED ; 0             ; 0             ; 0            ; 0             ; 0            ; 1             ; 1          ;
+; ST.ST_READCS  ; 0             ; 0             ; 0            ; 0             ; 1            ; 0             ; 1          ;
+; ST.ST_WRITECS ; 0             ; 0             ; 0            ; 1             ; 0            ; 0             ; 1          ;
+; ST.ST_READIO  ; 0             ; 0             ; 1            ; 0             ; 0            ; 0             ; 1          ;
+; ST.ST_WRITEIO ; 0             ; 1             ; 0            ; 0             ; 0            ; 0             ; 1          ;
+; ST.ST_SUSTAIN ; 1             ; 0             ; 0            ; 0             ; 0            ; 0             ; 1          ;
++---------------+---------------+---------------+--------------+---------------+--------------+---------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                               ;
++----------------------------------------------------------------+-------------------------------------------------+
+; Register name                                                  ; Reason for Removal                              ;
++----------------------------------------------------------------+-------------------------------------------------+
+; pci_controller:b2v_inst1|BAR_4_DEV0[1..4]                      ; Stuck at GND due to stuck port data_in          ;
+; pci_controller:b2v_inst1|BAR_0_DEV1[1..2]                      ; Stuck at GND due to stuck port data_in          ;
+; pci_controller:b2v_inst1|BAR_1_DEV1[1..2]                      ; Stuck at GND due to stuck port data_in          ;
+; pci_controller:b2v_inst1|CMD_STAT_DEV0[2..18,20..22,24,26..31] ; Stuck at GND due to stuck port data_in          ;
+; pci_controller:b2v_inst1|CMD_STAT_DEV1[2..18,20..22,24,26..31] ; Stuck at GND due to stuck port data_in          ;
+; pci_controller:b2v_inst1|INT_PIN_LINE_DEV0[8,10..31]           ; Stuck at GND due to stuck port data_in          ;
+; pci_controller:b2v_inst1|INT_PIN_LINE_DEV1[9..31]              ; Stuck at GND due to stuck port data_in          ;
+; com_controller:b2v_inst|LSR_COM1[1..4,7]                       ; Stuck at GND due to stuck port data_in          ;
+; com_controller:b2v_inst|IIR_COM1[7]                            ; Merged with com_controller:b2v_inst|IIR_COM1[6] ;
+; pci_controller:b2v_inst1|ST~15                                 ; Lost fanout                                     ;
+; pci_controller:b2v_inst1|ST~16                                 ; Lost fanout                                     ;
+; pci_controller:b2v_inst1|ST~17                                 ; Lost fanout                                     ;
+; com_controller:b2v_inst|O_AD[8,16,24]                          ; Merged with com_controller:b2v_inst|O_AD[0]     ;
+; com_controller:b2v_inst|O_AD[9,17,25]                          ; Merged with com_controller:b2v_inst|O_AD[1]     ;
+; com_controller:b2v_inst|O_AD[10,18,26]                         ; Merged with com_controller:b2v_inst|O_AD[2]     ;
+; com_controller:b2v_inst|O_AD[11,19,27]                         ; Merged with com_controller:b2v_inst|O_AD[3]     ;
+; com_controller:b2v_inst|O_AD[12,20,28]                         ; Merged with com_controller:b2v_inst|O_AD[4]     ;
+; com_controller:b2v_inst|O_AD[13,21,29]                         ; Merged with com_controller:b2v_inst|O_AD[5]     ;
+; com_controller:b2v_inst|O_AD[14,22,30]                         ; Merged with com_controller:b2v_inst|O_AD[6]     ;
+; com_controller:b2v_inst|O_AD[15,23,31]                         ; Merged with com_controller:b2v_inst|O_AD[7]     ;
+; Total Number of Removed Registers = 141                        ;                                                 ;
++----------------------------------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 494   ;
+; Number of registers using Synchronous Clear  ; 6     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 364   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 233   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; com_controller:b2v_inst|TSR_COM1[0]     ; 2       ;
+; com_controller:b2v_inst|rx_shift_en     ; 3       ;
+; com_controller:b2v_inst|RSR_COM1[3]     ; 5       ;
+; com_controller:b2v_inst|RSR_COM1[2]     ; 5       ;
+; com_controller:b2v_inst|RSR_COM1[0]     ; 1       ;
+; com_controller:b2v_inst|RSR_COM1[4]     ; 6       ;
+; com_controller:b2v_inst|RSR_COM1[1]     ; 3       ;
+; com_controller:b2v_inst|strb_cntr_tx[0] ; 2       ;
+; com_controller:b2v_inst|strb_cntr_rx[0] ; 2       ;
+; com_controller:b2v_inst|RSR_COM1[5]     ; 4       ;
+; com_controller:b2v_inst|IIR_COM1[0]     ; 1       ;
+; com_controller:b2v_inst|RBR_COM1[0]     ; 1       ;
+; com_controller:b2v_inst|RBR_COM1[1]     ; 1       ;
+; com_controller:b2v_inst|RBR_COM1[2]     ; 1       ;
+; com_controller:b2v_inst|RBR_COM1[3]     ; 1       ;
+; com_controller:b2v_inst|RBR_COM1[4]     ; 1       ;
+; com_controller:b2v_inst|LSR_COM1[5]     ; 1       ;
+; com_controller:b2v_inst|LSR_COM1[6]     ; 1       ;
+; com_controller:b2v_inst|DLL_COM1[6]     ; 4       ;
+; com_controller:b2v_inst|RBR_COM1[6]     ; 1       ;
+; com_controller:b2v_inst|RBR_COM1[7]     ; 1       ;
+; com_controller:b2v_inst|DLM_COM1[7]     ; 4       ;
+; com_controller:b2v_inst|strb_tx_en      ; 1       ;
+; com_controller:b2v_inst|strb_rx_en      ; 21      ;
+; com_controller:b2v_inst|RSR_COM1[6]     ; 5       ;
+; com_controller:b2v_inst|DLL_COM1[5]     ; 4       ;
+; com_controller:b2v_inst|RSR_COM1[7]     ; 4       ;
+; com_controller:b2v_inst|RSR_COM1[8]     ; 5       ;
+; com_controller:b2v_inst|RBR_COM1[5]     ; 1       ;
+; com_controller:b2v_inst|RSR_COM1[9]     ; 3       ;
+; com_controller:b2v_inst|RSR_COM1[10]    ; 1       ;
+; Total number of inverted registers = 31 ;         ;
++-----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                        ;
++-------------------------------------+----------------------------------------+------+
+; Register Name                       ; Megafunction                           ; Type ;
++-------------------------------------+----------------------------------------+------+
+; com_controller:b2v_inst|THR_COM1[0] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
+; com_controller:b2v_inst|THR_COM1[1] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
+; com_controller:b2v_inst|THR_COM1[2] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
+; com_controller:b2v_inst|THR_COM1[3] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
+; com_controller:b2v_inst|THR_COM1[4] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
+; com_controller:b2v_inst|THR_COM1[5] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
+; com_controller:b2v_inst|THR_COM1[6] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
+; com_controller:b2v_inst|THR_COM1[7] ; com_controller:b2v_inst|FIFO_TX_COM1~0 ; RAM  ;
++-------------------------------------+----------------------------------------+------+
+
+
++--------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0 ;
++---------------------------+-------+------+-------------------------------------+
+; Assignment                ; Value ; From ; To                                  ;
++---------------------------+-------+------+-------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; a101  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s102  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s103  ; -    ; -                                   ;
++---------------------------+-------+------+-------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_counter:fifo_tx_waddr_rtl_1 ;
++---------------------------+-------+------+-------------------------------------+
+; Assignment                ; Value ; From ; To                                  ;
++---------------------------+-------+------+-------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; a101  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s102  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s103  ; -    ; -                                   ;
++---------------------------+-------+------+-------------------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2 ;
++---------------------------+-------+------+---------------------------------------+
+; Assignment                ; Value ; From ; To                                    ;
++---------------------------+-------+------+---------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; a101  ; -    ; -                                     ;
+; SUPPRESS_DA_RULE_INTERNAL ; s102  ; -    ; -                                     ;
+; SUPPRESS_DA_RULE_INTERNAL ; s103  ; -    ; -                                     ;
++---------------------------+-------+------+---------------------------------------+
+
+
++-------------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_counter:fifo_rx_itrig_cntr_rtl_3 ;
++---------------------------+-------+------+------------------------------------------+
+; Assignment                ; Value ; From ; To                                       ;
++---------------------------+-------+------+------------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; a101  ; -    ; -                                        ;
+; SUPPRESS_DA_RULE_INTERNAL ; s102  ; -    ; -                                        ;
+; SUPPRESS_DA_RULE_INTERNAL ; s103  ; -    ; -                                        ;
++---------------------------+-------+------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4 ;
++---------------------------+-------+------+-------------------------------------+
+; Assignment                ; Value ; From ; To                                  ;
++---------------------------+-------+------+-------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; a101  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s102  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s103  ; -    ; -                                   ;
++---------------------------+-------+------+-------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5 ;
++---------------------------+-------+------+-------------------------------------+
+; Assignment                ; Value ; From ; To                                  ;
++---------------------------+-------+------+-------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; a101  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s102  ; -    ; -                                   ;
+; SUPPRESS_DA_RULE_INTERNAL ; s103  ; -    ; -                                   ;
++---------------------------+-------+------+-------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_add_sub:Add1|addcore:adder ;
++---------------------------+-------+------+------------------------------------+
+; Assignment                ; Value ; From ; To                                 ;
++---------------------------+-------+------+------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                                  ;
++---------------------------+-------+------+------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Source assignments for com_controller:b2v_inst|lpm_add_sub:Add2|addcore:adder ;
++---------------------------+-------+------+------------------------------------+
+; Assignment                ; Value ; From ; To                                 ;
++---------------------------+-------+------+------------------------------------+
+; SUPPRESS_DA_RULE_INTERNAL ; A103  ; -    ; -                                  ;
++---------------------------+-------+------+------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pci_controller:b2v_inst1     ;
++----------------------+----------------------------------+-----------------+
+; Parameter Name       ; Value                            ; Type            ;
++----------------------+----------------------------------+-----------------+
+; VIDPID               ; 0000000000000001                 ; Unsigned Binary ;
+; STATUSCOMMAND        ; 0000000000000010                 ; Unsigned Binary ;
+; CLASSCODE            ; 0000000000000100                 ; Unsigned Binary ;
+; BIST_HEADER_LAT_CACH ; 0000000000001000                 ; Unsigned Binary ;
+; BAR0                 ; 0000000000010000                 ; Unsigned Binary ;
+; BAR1                 ; 0000000000100000                 ; Unsigned Binary ;
+; BAR2                 ; 0000000001000000                 ; Unsigned Binary ;
+; BAR3                 ; 0000000010000000                 ; Unsigned Binary ;
+; BAR4                 ; 0000000100000000                 ; Unsigned Binary ;
+; BAR5                 ; 0000001000000000                 ; Unsigned Binary ;
+; CARDBUS              ; 0000010000000000                 ; Unsigned Binary ;
+; SUBSYSTEM_VENDOR     ; 0000100000000000                 ; Unsigned Binary ;
+; EXPANSION_ROM_BAR    ; 0001000000000000                 ; Unsigned Binary ;
+; CAP_POINTER          ; 0010000000000000                 ; Unsigned Binary ;
+; LAT_INTERRUPT        ; 0100000000000000                 ; Unsigned Binary ;
+; RESERVED             ; 1000000000000000                 ; Unsigned Binary ;
+; CS_INT_PIN_DEV0      ; 00000000000000000000001000000000 ; Unsigned Binary ;
+; CS_INT_PIN_DEV1      ; 00000000000000000000000100000000 ; Unsigned Binary ;
+; CS_INT_PIN_DEV2      ; 00000000000000000000001100000000 ; Unsigned Binary ;
+; CS_INT_PIN_DEV3      ; 00000000000000000000010000000000 ; Unsigned Binary ;
+; CS_STAT_MASK_DEV0    ; 0000001010001000                 ; Unsigned Binary ;
+; CS_STAT_MASK_DEV1    ; 0000001010001000                 ; Unsigned Binary ;
+; CS_STAT_MASK_DEV2    ; 0000001010001000                 ; Unsigned Binary ;
+; CS_STAT_MASK_DEV3    ; 0000001010001000                 ; Unsigned Binary ;
+; CS_CMD_MASK_DEV0     ; 0000000000000011                 ; Unsigned Binary ;
+; CS_CMD_MASK_DEV1     ; 0000000000000011                 ; Unsigned Binary ;
+; CS_CMD_MASK_DEV2     ; 0000000000000011                 ; Unsigned Binary ;
+; CS_CMD_MASK_DEV3     ; 0000000000000011                 ; Unsigned Binary ;
+; CS_MULTIFUNC_DEV     ; 00000000100000000000000000000000 ; Unsigned Binary ;
+; CS_VIDPID_DEV0       ; 11011110101011011011111011101111 ; Unsigned Binary ;
+; CS_CLASSCODE_DEV0    ; 00001100000000110000000001010000 ; Unsigned Binary ;
+; CS_VIDPID_DEV1       ; 01010000010100110100001101001000 ; Unsigned Binary ;
+; CS_CLASSCODE_DEV1    ; 00000111000000000000001000001111 ; Unsigned Binary ;
+; CS_VIDPID_DEV2       ; 00000000000000000000000000000000 ; Unsigned Binary ;
+; CS_CLASSCODE_DEV2    ; 00000000000000000000000000000000 ; Unsigned Binary ;
+; CS_VIDPID_DEV3       ; 00000000000000000000000000000000 ; Unsigned Binary ;
+; CS_CLASSCODE_DEV3    ; 00000000000000000000000000000000 ; Unsigned Binary ;
+; ST_IDLE              ; 0                                ; Signed Integer  ;
+; ST_DECODED           ; 1                                ; Signed Integer  ;
+; ST_READCS            ; 2                                ; Signed Integer  ;
+; ST_WRITECS           ; 3                                ; Signed Integer  ;
+; ST_READIO            ; 4                                ; Signed Integer  ;
+; ST_WRITEIO           ; 5                                ; Signed Integer  ;
+; ST_SUSTAIN           ; 6                                ; Signed Integer  ;
++----------------------+----------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0 ;
++------------------------+-------------------+-------------------------------------------------------------+
+; Parameter Name         ; Value             ; Type                                                        ;
++------------------------+-------------------+-------------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                                  ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                                                ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                                                ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                                              ;
+; LPM_WIDTH              ; 4                 ; Untyped                                                     ;
+; LPM_DIRECTION          ; UP                ; Untyped                                                     ;
+; LPM_MODULUS            ; 0                 ; Untyped                                                     ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                                     ;
+; DEVICE_FAMILY          ; FLEX10KE          ; Untyped                                                     ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                                     ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                                          ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                                          ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                                     ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                                     ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                                     ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                                     ;
++------------------------+-------------------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_tx_waddr_rtl_1 ;
++------------------------+-------------------+-------------------------------------------------------------+
+; Parameter Name         ; Value             ; Type                                                        ;
++------------------------+-------------------+-------------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                                  ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                                                ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                                                ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                                              ;
+; LPM_WIDTH              ; 4                 ; Untyped                                                     ;
+; LPM_DIRECTION          ; UP                ; Untyped                                                     ;
+; LPM_MODULUS            ; 0                 ; Untyped                                                     ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                                     ;
+; DEVICE_FAMILY          ; FLEX10KE          ; Untyped                                                     ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                                     ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                                          ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                                          ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                                     ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                                     ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                                     ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                                     ;
++------------------------+-------------------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2 ;
++------------------------+-------------------+---------------------------------------------------------------+
+; Parameter Name         ; Value             ; Type                                                          ;
++------------------------+-------------------+---------------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                                                ;
+; LPM_WIDTH              ; 6                 ; Untyped                                                       ;
+; LPM_DIRECTION          ; UP                ; Untyped                                                       ;
+; LPM_MODULUS            ; 0                 ; Untyped                                                       ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                                       ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                                       ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                                       ;
+; DEVICE_FAMILY          ; FLEX10KE          ; Untyped                                                       ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                                       ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                                            ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                                            ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                                       ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                                       ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                                       ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                                       ;
++------------------------+-------------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_rx_itrig_cntr_rtl_3 ;
++------------------------+-------------------+------------------------------------------------------------------+
+; Parameter Name         ; Value             ; Type                                                             ;
++------------------------+-------------------+------------------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                                       ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                                                     ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                                                     ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                                                   ;
+; LPM_WIDTH              ; 4                 ; Untyped                                                          ;
+; LPM_DIRECTION          ; UP                ; Untyped                                                          ;
+; LPM_MODULUS            ; 0                 ; Untyped                                                          ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                                          ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                                          ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                                          ;
+; DEVICE_FAMILY          ; FLEX10KE          ; Untyped                                                          ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                                          ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                                               ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                                               ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                                          ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                                          ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                                          ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                                          ;
++------------------------+-------------------+------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4 ;
++------------------------+-------------------+-------------------------------------------------------------+
+; Parameter Name         ; Value             ; Type                                                        ;
++------------------------+-------------------+-------------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                                  ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                                                ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                                                ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                                              ;
+; LPM_WIDTH              ; 4                 ; Untyped                                                     ;
+; LPM_DIRECTION          ; UP                ; Untyped                                                     ;
+; LPM_MODULUS            ; 0                 ; Untyped                                                     ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                                     ;
+; DEVICE_FAMILY          ; FLEX10KE          ; Untyped                                                     ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                                     ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                                          ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                                          ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                                     ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                                     ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                                     ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                                     ;
++------------------------+-------------------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5 ;
++------------------------+-------------------+-------------------------------------------------------------+
+; Parameter Name         ; Value             ; Type                                                        ;
++------------------------+-------------------+-------------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                                  ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                                                ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                                                ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                                              ;
+; LPM_WIDTH              ; 4                 ; Untyped                                                     ;
+; LPM_DIRECTION          ; UP                ; Untyped                                                     ;
+; LPM_MODULUS            ; 0                 ; Untyped                                                     ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                                     ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                                     ;
+; DEVICE_FAMILY          ; FLEX10KE          ; Untyped                                                     ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                                     ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                                          ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                                          ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                                     ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                                     ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                                     ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                                     ;
++------------------------+-------------------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|altdpram:FIFO_TX_COM1_rtl_6 ;
++-------------------------------------+--------------+-------------------------------------------------+
+; Parameter Name                      ; Value        ; Type                                            ;
++-------------------------------------+--------------+-------------------------------------------------+
+; WIDTH_BYTEENA_A                     ; 1            ; Untyped                                         ;
+; WIDTH_BYTEENA_B                     ; 1            ; Untyped                                         ;
+; WIDTH                               ; 8            ; Untyped                                         ;
+; WIDTHAD                             ; 4            ; Untyped                                         ;
+; NUMWORDS                            ; 16           ; Untyped                                         ;
+; FILE                                ; UNUSED       ; Untyped                                         ;
+; LPM_FILE                            ; UNUSED       ; Untyped                                         ;
+; INDATA_REG                          ; INCLOCK      ; Untyped                                         ;
+; INDATA_ACLR                         ; OFF          ; Untyped                                         ;
+; WRADDRESS_REG                       ; INCLOCK      ; Untyped                                         ;
+; WRADDRESS_ACLR                      ; OFF          ; Untyped                                         ;
+; WRCONTROL_REG                       ; INCLOCK      ; Untyped                                         ;
+; WRCONTROL_ACLR                      ; OFF          ; Untyped                                         ;
+; RDADDRESS_REG                       ; UNREGISTERED ; Untyped                                         ;
+; RDADDRESS_ACLR                      ; OFF          ; Untyped                                         ;
+; RDCONTROL_REG                       ; UNREGISTERED ; Untyped                                         ;
+; RDCONTROL_ACLR                      ; OFF          ; Untyped                                         ;
+; OUTDATA_REG                         ; OUTCLOCK     ; Untyped                                         ;
+; OUTDATA_ACLR                        ; ON           ; Untyped                                         ;
+; USE_EAB                             ; ON           ; Untyped                                         ;
+; MAXIMUM_DEPTH                       ; 2048         ; Untyped                                         ;
+; DEVICE_FAMILY                       ; FLEX10KE     ; Untyped                                         ;
+; SUPPRESS_MEMORY_CONVERSION_WARNINGS ; OFF          ; Untyped                                         ;
+; INTENDED_DEVICE_FAMILY              ; APEX20KE     ; Untyped                                         ;
+; ENABLE_RAM_BENCHMARKING_MODE        ; OFF          ; Untyped                                         ;
+; RAM_BLOCK_TYPE                      ; AUTO         ; Untyped                                         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS  ; DONT_CARE    ; Untyped                                         ;
+; BYTE_SIZE                           ; 8            ; Untyped                                         ;
+; WIDTH_BYTEENA                       ; 1            ; Untyped                                         ;
+; DISABLE_LE_RAM_LIMIT_CHECK          ; OFF          ; Untyped                                         ;
+; CBXI_PARAMETER                      ; NOTHING      ; Untyped                                         ;
+; AUTO_CARRY_CHAINS                   ; ON           ; AUTO_CARRY                                      ;
+; IGNORE_CARRY_BUFFERS                ; OFF          ; IGNORE_CARRY                                    ;
+; AUTO_CASCADE_CHAINS                 ; ON           ; AUTO_CASCADE                                    ;
+; IGNORE_CASCADE_BUFFERS              ; OFF          ; IGNORE_CASCADE                                  ;
++-------------------------------------+--------------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_add_sub:Add1 ;
++------------------------+-------------+----------------------------------------------------+
+; Parameter Name         ; Value       ; Type                                               ;
++------------------------+-------------+----------------------------------------------------+
+; LPM_WIDTH              ; 21          ; Untyped                                            ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                                            ;
+; LPM_DIRECTION          ; ADD         ; Untyped                                            ;
+; ONE_INPUT_IS_CONSTANT  ; YES         ; Untyped                                            ;
+; LPM_PIPELINE           ; 0           ; Untyped                                            ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                                            ;
+; REGISTERED_AT_END      ; 0           ; Untyped                                            ;
+; OPTIMIZE_FOR_SPEED     ; 1           ; Untyped                                            ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                                            ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                                            ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                                 ;
+; DEVICE_FAMILY          ; FLEX10KE    ; Untyped                                            ;
+; USE_WYS                ; OFF         ; Untyped                                            ;
+; STYLE                  ; FAST        ; Untyped                                            ;
+; CBXI_PARAMETER         ; add_sub_6sh ; Untyped                                            ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                                         ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                                       ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                                       ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                                     ;
++------------------------+-------------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: com_controller:b2v_inst|lpm_add_sub:Add2 ;
++------------------------+-------------+----------------------------------------------------+
+; Parameter Name         ; Value       ; Type                                               ;
++------------------------+-------------+----------------------------------------------------+
+; LPM_WIDTH              ; 21          ; Untyped                                            ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                                            ;
+; LPM_DIRECTION          ; ADD         ; Untyped                                            ;
+; ONE_INPUT_IS_CONSTANT  ; YES         ; Untyped                                            ;
+; LPM_PIPELINE           ; 0           ; Untyped                                            ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                                            ;
+; REGISTERED_AT_END      ; 0           ; Untyped                                            ;
+; OPTIMIZE_FOR_SPEED     ; 1           ; Untyped                                            ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                                            ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                                            ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                                 ;
+; DEVICE_FAMILY          ; FLEX10KE    ; Untyped                                            ;
+; USE_WYS                ; OFF         ; Untyped                                            ;
+; STYLE                  ; FAST        ; Untyped                                            ;
+; CBXI_PARAMETER         ; add_sub_6sh ; Untyped                                            ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                                         ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                                       ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                                       ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                                     ;
++------------------------+-------------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "com_controller:b2v_inst"                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; O_PAR ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
+    Info: Processing started: Tue Oct 16 05:47:06 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pci_com_lpt_usb_eth -c pci_com_lpt_usb_eth
+Info: Found 1 design units, including 1 entities, in source file pci_com_lpt_usb_eth.v
+    Info: Found entity 1: pci_com_lpt_usb_eth
+Info: Found 1 design units, including 1 entities, in source file pci_controller.v
+    Info: Found entity 1: pci_controller
+Warning (10261): Verilog HDL Event Control warning at com_controller.v(181): Event Control contains a complex event expression
+Warning (10261): Verilog HDL Event Control warning at com_controller.v(589): Event Control contains a complex event expression
+Warning (10261): Verilog HDL Event Control warning at com_controller.v(605): Event Control contains a complex event expression
+Warning (10261): Verilog HDL Event Control warning at com_controller.v(618): Event Control contains a complex event expression
+Warning (10261): Verilog HDL Event Control warning at com_controller.v(627): Event Control contains a complex event expression
+Warning (10261): Verilog HDL Event Control warning at com_controller.v(681): Event Control contains a complex event expression
+Warning (10261): Verilog HDL Event Control warning at com_controller.v(692): Event Control contains a complex event expression
+Info: Found 1 design units, including 1 entities, in source file com_controller.v
+    Info: Found entity 1: com_controller
+Warning (10236): Verilog HDL Implicit Net warning at com_controller.v(212): created implicit net for "RTS"
+Warning (10236): Verilog HDL Implicit Net warning at com_controller.v(213): created implicit net for "DTR"
+Warning (10236): Verilog HDL Implicit Net warning at com_controller.v(561): created implicit net for "is_dev_init"
+Info: Elaborating entity "pci_com_lpt_usb_eth" for the top level hierarchy
+Info: Elaborating entity "com_controller" for hierarchy "com_controller:b2v_inst"
+Warning (10036): Verilog HDL or VHDL warning at com_controller.v(212): object "RTS" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at com_controller.v(213): object "DTR" assigned a value but never read
+Warning (10858): Verilog HDL warning at com_controller.v(53): object MSR_COM1 used but never assigned
+Warning (10858): Verilog HDL warning at com_controller.v(75): object par_err used but never assigned
+Warning (10858): Verilog HDL warning at com_controller.v(76): object frame_err used but never assigned
+Warning (10036): Verilog HDL or VHDL warning at com_controller.v(104): object "COM1_RESET" assigned a value but never read
+Warning (10858): Verilog HDL warning at com_controller.v(118): object CTS_COM1_changed_int_flag used but never assigned
+Warning (10858): Verilog HDL warning at com_controller.v(119): object DSR_COM1_changed_int_flag used but never assigned
+Warning (10858): Verilog HDL warning at com_controller.v(120): object RI_COM1_changed_int_flag used but never assigned
+Warning (10858): Verilog HDL warning at com_controller.v(121): object DCD_COM1_changed_int_flag used but never assigned
+Warning (10858): Verilog HDL warning at com_controller.v(123): object par_err_iflag used but never assigned
+Warning (10858): Verilog HDL warning at com_controller.v(124): object frame_err_iflag used but never assigned
+Info (10264): Verilog HDL Case Statement information at com_controller.v(138): all case item expressions in this case statement are onehot
+Warning (10230): Verilog HDL assignment warning at com_controller.v(355): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at com_controller.v(456): truncated value with size 32 to match size of target (21)
+Warning (10230): Verilog HDL assignment warning at com_controller.v(467): truncated value with size 32 to match size of target (21)
+Warning (10230): Verilog HDL assignment warning at com_controller.v(496): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at com_controller.v(599): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at com_controller.v(624): truncated value with size 32 to match size of target (4)
+Warning (10240): Verilog HDL Always Construct warning at com_controller.v(718): inferring latch(es) for variable "IIR_COM1", which holds its previous value in one or more paths through the always construct
+Warning (10230): Verilog HDL assignment warning at com_controller.v(793): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at com_controller.v(795): truncated value with size 32 to match size of target (4)
+Warning (10240): Verilog HDL Always Construct warning at com_controller.v(758): inferring latch(es) for variable "FCR_COM1", which holds its previous value in one or more paths through the always construct
+Warning (10034): Output port "O_PAR" at com_controller.v(25) has no driver
+Warning (10034): Output port "O_RTS" at com_controller.v(28) has no driver
+Warning (10034): Output port "O_DTR" at com_controller.v(29) has no driver
+Warning (10034): Output port "baudclk" at com_controller.v(33) has no driver
+Warning (10030): Net "MSR_COM1[7]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MSR_COM1[6]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MSR_COM1[5]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MSR_COM1[4]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MSR_COM1[3]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MSR_COM1[2]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MSR_COM1[1]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "MSR_COM1[0]" at com_controller.v(53) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "par_err[0]" at com_controller.v(75) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "frame_err[0]" at com_controller.v(76) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "CTS_COM1_changed_int_flag" at com_controller.v(118) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "DSR_COM1_changed_int_flag" at com_controller.v(119) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "RI_COM1_changed_int_flag" at com_controller.v(120) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "DCD_COM1_changed_int_flag" at com_controller.v(121) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "par_err_iflag" at com_controller.v(123) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "frame_err_iflag" at com_controller.v(124) has no driver or initial value, using a default initial value '0'
+Info (10041): Inferred latch for "FCR_COM1[0]" at com_controller.v(758)
+Info (10041): Inferred latch for "FCR_COM1[2]" at com_controller.v(758)
+Info (10041): Inferred latch for "FCR_COM1[6]" at com_controller.v(758)
+Info (10041): Inferred latch for "FCR_COM1[7]" at com_controller.v(758)
+Info (10041): Inferred latch for "IIR_COM1[4]" at com_controller.v(718)
+Info (10041): Inferred latch for "IIR_COM1[5]" at com_controller.v(718)
+Info: Elaborating entity "pci_controller" for hierarchy "pci_controller:b2v_inst1"
+Warning (10858): Verilog HDL warning at pci_controller.v(30): object BAR_0_DEV0 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(31): object BAR_1_DEV0 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(32): object BAR_2_DEV0 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(33): object BAR_3_DEV0 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(35): object BAR_5_DEV0 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(41): object BAR_2_DEV1 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(42): object BAR_3_DEV1 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(43): object BAR_4_DEV1 used but never assigned
+Warning (10858): Verilog HDL warning at pci_controller.v(44): object BAR_5_DEV1 used but never assigned
+Warning (10036): Verilog HDL or VHDL warning at pci_controller.v(125): object "is_devcs" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at pci_controller.v(129): object "is_cfg_space" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at pci_controller.v(279): truncated value with size 32 to match size of target (16)
+Warning (10030): Net "BAR_0_DEV0[31]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[30]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[29]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[28]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[27]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[26]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[25]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[24]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[23]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[22]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[21]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[20]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[19]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[18]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[17]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[16]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[15]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[14]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[13]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[12]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[11]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[10]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[9]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[8]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[7]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[6]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[5]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[4]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[3]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[2]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[1]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_0_DEV0[0]" at pci_controller.v(30) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[31]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[30]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[29]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[28]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[27]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[26]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[25]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[24]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[23]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[22]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[21]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[20]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[19]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[18]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[17]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[16]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[15]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[14]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[13]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[12]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[11]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[10]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[9]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[8]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[7]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[6]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[5]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[4]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[3]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[2]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[1]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_1_DEV0[0]" at pci_controller.v(31) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[31]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[30]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[29]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[28]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[27]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[26]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[25]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[24]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[23]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[22]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[21]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[20]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[19]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[18]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[17]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[16]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[15]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[14]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[13]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[12]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[11]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[10]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[9]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[8]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[7]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[6]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[5]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[4]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[3]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[2]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[1]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV0[0]" at pci_controller.v(32) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[31]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[30]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[29]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[28]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[27]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[26]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[25]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[24]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[23]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[22]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[21]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[20]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[19]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[18]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[17]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[16]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[15]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[14]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[13]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[12]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[11]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[10]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[9]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[8]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[7]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[6]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[5]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[4]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[3]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[2]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[1]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV0[0]" at pci_controller.v(33) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[31]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[30]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[29]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[28]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[27]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[26]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[25]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[24]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[23]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[22]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[21]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[20]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[19]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[18]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[17]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[16]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[15]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[14]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[13]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[12]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[11]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[10]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[9]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[8]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[7]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[6]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[5]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[4]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[3]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[2]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[1]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV0[0]" at pci_controller.v(35) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[31]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[30]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[29]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[28]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[27]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[26]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[25]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[24]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[23]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[22]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[21]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[20]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[19]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[18]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[17]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[16]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[15]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[14]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[13]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[12]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[11]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[10]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[9]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[8]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[7]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[6]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[5]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[4]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[3]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[2]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[1]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_2_DEV1[0]" at pci_controller.v(41) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[31]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[30]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[29]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[28]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[27]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[26]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[25]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[24]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[23]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[22]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[21]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[20]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[19]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[18]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[17]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[16]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[15]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[14]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[13]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[12]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[11]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[10]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[9]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[8]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[7]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[6]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[5]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[4]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[3]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[2]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[1]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_3_DEV1[0]" at pci_controller.v(42) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[31]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[30]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[29]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[28]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[27]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[26]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[25]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[24]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[23]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[22]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[21]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[20]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[19]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[18]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[17]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[16]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[15]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[14]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[13]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[12]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[11]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[10]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[9]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[8]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[7]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[6]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[5]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[4]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[3]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[2]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[1]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_4_DEV1[0]" at pci_controller.v(43) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[31]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[30]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[29]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[28]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[27]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[26]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[25]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[24]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[23]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[22]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[21]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[20]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[19]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[18]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[17]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[16]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[15]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[14]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[13]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[12]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[11]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[10]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[9]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[8]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[7]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[6]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[5]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[4]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[3]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[2]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[1]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "BAR_5_DEV1[0]" at pci_controller.v(44) has no driver or initial value, using a default initial value '0'
+Info: Found 1 instances of uninferred RAM logic
+    Info: RAM logic "com_controller:b2v_inst|FIFO_RX_COM1" is uninferred due to unsupported read-during-write behavior
+Info: Inferred 7 megafunctions from design logic
+    Info: Inferred lpm_counter megafunction (LPM_WIDTH=4) from the following logic: "com_controller:b2v_inst|fifo_tx_raddr[0]~4"
+    Info: Inferred lpm_counter megafunction (LPM_WIDTH=4) from the following logic: "com_controller:b2v_inst|fifo_tx_waddr[0]~0"
+    Info: Inferred lpm_counter megafunction (LPM_WIDTH=6) from the following logic: "com_controller:b2v_inst|rx_timeout_cntr[0]~6"
+    Info: Inferred lpm_counter megafunction (LPM_WIDTH=4) from the following logic: "com_controller:b2v_inst|fifo_rx_itrig_cntr[0]~0"
+    Info: Inferred lpm_counter megafunction (LPM_WIDTH=4) from the following logic: "com_controller:b2v_inst|fifo_rx_waddr[0]~0"
+    Info: Inferred lpm_counter megafunction (LPM_WIDTH=4) from the following logic: "com_controller:b2v_inst|fifo_rx_raddr[0]~0"
+    Info: Inferred altdpram megafunction from the following logic: "com_controller:b2v_inst|FIFO_TX_COM1~0" 
+        Info: Parameter WIDTH set to 8
+        Info: Parameter WIDTHAD set to 4
+        Info: Parameter NUMWORDS set to 16
+        Info: Parameter WRADDRESS_REG set to INCLOCK
+        Info: Parameter WRADDRESS_ACLR set to OFF
+        Info: Parameter WRCONTROL_REG set to INCLOCK
+        Info: Parameter WRCONTROL_ACLR set to OFF
+        Info: Parameter RDADDRESS_REG set to UNREGISTERED
+        Info: Parameter RDADDRESS_ACLR set to OFF
+        Info: Parameter RDCONTROL_REG set to UNREGISTERED
+        Info: Parameter RDCONTROL_ACLR set to OFF
+        Info: Parameter INDATA_REG set to INCLOCK
+        Info: Parameter INDATA_ACLR set to OFF
+        Info: Parameter OUTDATA_REG set to OUTCLOCK
+        Info: Parameter OUTDATA_ACLR set to ON
+        Info: Parameter LPM_FILE set to UNUSED
+Info: Inferred 2 megafunctions from design logic
+    Info: Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "com_controller:b2v_inst|Add1"
+    Info: Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "com_controller:b2v_inst|Add2"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0"
+Info: Instantiated megafunction "com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "4"
+    Info: Parameter "LPM_DIRECTION" = "UP"
+    Info: Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0|alt_counter_f10ke:wysi_counter", which is child of megafunction instantiation "com_controller:b2v_inst|lpm_counter:fifo_tx_raddr_rtl_0"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2"
+Info: Instantiated megafunction "com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "6"
+    Info: Parameter "LPM_DIRECTION" = "UP"
+    Info: Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2|alt_counter_f10ke:wysi_counter", which is child of megafunction instantiation "com_controller:b2v_inst|lpm_counter:rx_timeout_cntr_rtl_2"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|altdpram:FIFO_TX_COM1_rtl_6"
+Info: Instantiated megafunction "com_controller:b2v_inst|altdpram:FIFO_TX_COM1_rtl_6" with the following parameter:
+    Info: Parameter "WIDTH" = "8"
+    Info: Parameter "WIDTHAD" = "4"
+    Info: Parameter "NUMWORDS" = "16"
+    Info: Parameter "WRADDRESS_REG" = "INCLOCK"
+    Info: Parameter "WRADDRESS_ACLR" = "OFF"
+    Info: Parameter "WRCONTROL_REG" = "INCLOCK"
+    Info: Parameter "WRCONTROL_ACLR" = "OFF"
+    Info: Parameter "RDADDRESS_REG" = "UNREGISTERED"
+    Info: Parameter "RDADDRESS_ACLR" = "OFF"
+    Info: Parameter "RDCONTROL_REG" = "UNREGISTERED"
+    Info: Parameter "RDCONTROL_ACLR" = "OFF"
+    Info: Parameter "INDATA_REG" = "INCLOCK"
+    Info: Parameter "INDATA_ACLR" = "OFF"
+    Info: Parameter "OUTDATA_REG" = "OUTCLOCK"
+    Info: Parameter "OUTDATA_ACLR" = "ON"
+    Info: Parameter "LPM_FILE" = "UNUSED"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1"
+Info: Instantiated megafunction "com_controller:b2v_inst|lpm_add_sub:Add1" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "21"
+    Info: Parameter "LPM_DIRECTION" = "ADD"
+    Info: Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info: Parameter "ONE_INPUT_IS_CONSTANT" = "YES"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1|addcore:adder", which is child of megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1|addcore:adder|a_csnbuffer:oflow_node", which is child of megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1|addcore:adder|a_csnbuffer:result_node", which is child of megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1|altshift:result_ext_latency_ffs", which is child of megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1"
+Info: Elaborated megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1|altshift:carry_ext_latency_ffs", which is child of megafunction instantiation "com_controller:b2v_inst|lpm_add_sub:Add1"
+Warning: 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning: Tri-state node(s) do not directly drive top-level pin(s)
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[8]" to the node "pci_controller:b2v_inst1|O_ADDR[8]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[9]" to the node "pci_controller:b2v_inst1|O_ADDR[9]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[10]" to the node "pci_controller:b2v_inst1|O_ADDR[10]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[11]" to the node "pci_controller:b2v_inst1|O_ADDR[11]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[12]" to the node "pci_controller:b2v_inst1|O_ADDR[12]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[13]" to the node "pci_controller:b2v_inst1|O_ADDR[13]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[14]" to the node "pci_controller:b2v_inst1|O_ADDR[14]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[15]" to the node "pci_controller:b2v_inst1|O_ADDR[15]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[16]" to the node "pci_controller:b2v_inst1|O_ADDR[16]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[17]" to the node "pci_controller:b2v_inst1|O_ADDR[17]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[18]" to the node "pci_controller:b2v_inst1|O_ADDR[18]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[19]" to the node "pci_controller:b2v_inst1|O_ADDR[19]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[20]" to the node "pci_controller:b2v_inst1|O_ADDR[20]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[21]" to the node "pci_controller:b2v_inst1|O_ADDR[21]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[22]" to the node "pci_controller:b2v_inst1|O_ADDR[22]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[23]" to the node "pci_controller:b2v_inst1|O_ADDR[23]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[24]" to the node "pci_controller:b2v_inst1|O_ADDR[24]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[25]" to the node "pci_controller:b2v_inst1|O_ADDR[25]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[26]" to the node "pci_controller:b2v_inst1|O_ADDR[26]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[27]" to the node "pci_controller:b2v_inst1|O_ADDR[27]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[28]" to the node "pci_controller:b2v_inst1|O_ADDR[28]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[29]" to the node "pci_controller:b2v_inst1|O_ADDR[29]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[30]" to the node "pci_controller:b2v_inst1|O_ADDR[30]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[31]" to the node "pci_controller:b2v_inst1|O_ADDR[31]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[3]" to the node "com_controller:b2v_inst|Mux4" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[19]" to the node "com_controller:b2v_inst|Mux4" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[11]" to the node "com_controller:b2v_inst|Mux4" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[27]" to the node "com_controller:b2v_inst|Mux4" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[1]" to the node "com_controller:b2v_inst|Mux6" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[17]" to the node "com_controller:b2v_inst|Mux6" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[9]" to the node "com_controller:b2v_inst|Mux6" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[25]" to the node "com_controller:b2v_inst|Mux6" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[0]" to the node "com_controller:b2v_inst|Mux7" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[16]" to the node "com_controller:b2v_inst|Mux7" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[8]" to the node "com_controller:b2v_inst|Mux7" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[24]" to the node "com_controller:b2v_inst|Mux7" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[4]" to the node "com_controller:b2v_inst|Mux3" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[20]" to the node "com_controller:b2v_inst|Mux3" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[12]" to the node "com_controller:b2v_inst|Mux3" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[28]" to the node "com_controller:b2v_inst|Mux3" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[5]" to the node "com_controller:b2v_inst|Mux2" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[21]" to the node "com_controller:b2v_inst|Mux2" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[13]" to the node "com_controller:b2v_inst|Mux2" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[29]" to the node "com_controller:b2v_inst|Mux2" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[2]" to the node "pci_controller:b2v_inst1|O_ADDR[2]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[6]" to the node "pci_controller:b2v_inst1|O_ADDR[6]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[5]" to the node "pci_controller:b2v_inst1|O_ADDR[5]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[4]" to the node "pci_controller:b2v_inst1|O_ADDR[4]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[3]" to the node "pci_controller:b2v_inst1|O_ADDR[3]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[7]" to the node "pci_controller:b2v_inst1|BAR_4_DEV0[7]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[1]" to the node "pci_controller:b2v_inst1|O_ADDR[1]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "pci_controller:b2v_inst1|I_AD[0]" to the node "pci_controller:b2v_inst1|O_ADDR[0]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[7]" to the node "com_controller:b2v_inst|Mux0" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[23]" to the node "com_controller:b2v_inst|Mux0" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[15]" to the node "com_controller:b2v_inst|Mux0" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[31]" to the node "com_controller:b2v_inst|Mux0" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[2]" to the node "com_controller:b2v_inst|Mux5" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[18]" to the node "com_controller:b2v_inst|Mux5" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[10]" to the node "com_controller:b2v_inst|Mux5" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[26]" to the node "com_controller:b2v_inst|Mux5" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[6]" to the node "com_controller:b2v_inst|Mux1" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[22]" to the node "com_controller:b2v_inst|Mux1" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[14]" to the node "com_controller:b2v_inst|Mux1" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "com_controller:b2v_inst|I_AD[30]" to the node "com_controller:b2v_inst|Mux1" into an OR gate
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "O_RTS" is stuck at GND
+    Warning (13410): Pin "O_DTR" is stuck at GND
+    Warning (13410): Pin "baudout" is stuck at GND
+Info: Registers with preset signals will power-up high
+Info: 3 registers lost all their fanouts during netlist optimizations. The first 3 are displayed below.
+    Info: Register "pci_controller:b2v_inst1|ST~15" lost all its fanouts during netlist optimizations.
+    Info: Register "pci_controller:b2v_inst1|ST~16" lost all its fanouts during netlist optimizations.
+    Info: Register "pci_controller:b2v_inst1|ST~17" lost all its fanouts during netlist optimizations.
+Warning: Design contains 5 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "_I_IRDY"
+    Warning (15610): No output dependent on input pin "I_CTS"
+    Warning (15610): No output dependent on input pin "I_DSR"
+    Warning (15610): No output dependent on input pin "I_RI"
+    Warning (15610): No output dependent on input pin "I_DCD"
+Info: Implemented 1233 device resources after synthesis - the final resource count might be different
+    Info: Implemented 15 input pins
+    Info: Implemented 8 output pins
+    Info: Implemented 34 bidirectional pins
+    Info: Implemented 1168 logic cells
+    Info: Implemented 8 RAM segments
+Info: Generated suppressed messages file C:/altera/90sp1/quartus/pci_com_lpt_usb_eth/pci_com_lpt_usb_eth.map.smsg
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 428 warnings
+    Info: Peak virtual memory: 188 megabytes
+    Info: Processing ended: Tue Oct 16 05:47:11 2018
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:05
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/altera/90sp1/quartus/pci_com_lpt_usb_eth/pci_com_lpt_usb_eth.map.smsg.
+
+

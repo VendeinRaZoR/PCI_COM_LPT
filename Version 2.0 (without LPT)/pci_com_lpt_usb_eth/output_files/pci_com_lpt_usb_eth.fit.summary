@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Oct 29 18:51:42 2018
+Quartus II 32-bit Version : 13.0.0 Build 156 04/24/2013 SJ Web Edition
+Revision Name : pci_com_lpt_usb_eth
+Top-level Entity Name : pci_com_lpt_usb_eth
+Family : Cyclone III
+Device : EP3C10E144C7
+Timing Models : Final
+Total logic elements : 813 / 10,320 ( 8 % )
+    Total combinational functions : 792 / 10,320 ( 8 % )
+    Dedicated logic registers : 399 / 10,320 ( 4 % )
+Total registers : 399
+Total pins : 52 / 95 ( 55 % )
+Total virtual pins : 0
+Total memory bits : 256 / 423,936 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 46 ( 0 % )
+Total PLLs : 1 / 2 ( 50 % )

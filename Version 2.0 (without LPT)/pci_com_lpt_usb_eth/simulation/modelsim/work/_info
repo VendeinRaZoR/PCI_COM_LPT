@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera_projects\com_controller\simulation\modelsim
+vcom_controller
+Z1 I=PP?56i]>ggaN]a_8CVSQ3
+Z2 V2^1kZX=GTVVYX>3<G?d6K2
+Z3 dC:\altera\13.0\pci_com_lpt_usb_eth\simulation\modelsim
+Z4 w1540576684
+Z5 8C:/altera/13.0/pci_com_lpt_usb_eth/com_controller.v
+Z6 FC:/altera/13.0/pci_com_lpt_usb_eth/com_controller.v
+L0 9
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -reportprogress|300|-work|work|C:/altera/13.0/pci_com_lpt_usb_eth/com_controller.v|
+Z9 o-work work -O0
+Z10 !s100 <E3_<AJG9UQgkVgLlEXHJ2
+Z11 !s108 1540576688.777000
+Z12 !s107 C:/altera/13.0/pci_com_lpt_usb_eth/com_controller.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vpci_com_lpt_usb_eth
+Z13 !s100 1MdJ^[EE]mB3MTZE`RQ1[3
+Z14 I@Qe<4AC>E2AZ>de?Q[[iD0
+Z15 VTAk9SE72>;FF9H^ZL6m5h3
+R3
+Z16 w1540574806
+Z17 8C:/altera/13.0/pci_com_lpt_usb_eth/pci_com_lpt_usb_eth.v
+Z18 FC:/altera/13.0/pci_com_lpt_usb_eth/pci_com_lpt_usb_eth.v
+L0 19
+R7
+r1
+31
+Z19 !s90 -reportprogress|300|-work|work|C:/altera/13.0/pci_com_lpt_usb_eth/pci_com_lpt_usb_eth.v|
+R9
+!i10b 1
+!s85 0
+Z20 !s108 1540576689.496000
+Z21 !s107 C:/altera/13.0/pci_com_lpt_usb_eth/pci_com_lpt_usb_eth.v|
+!s101 -O0
+vpci_com_lpt_usb_eth_vlg_tst
+!i10b 1
+Z22 !s100 6Co6R8e9zUB:?Uih5]7[F1
+Z23 IP7`01=9bTmcHNH[Pffgof3
+Z24 VMR>JUkiCLnKY<TSK[U^4[1
+R3
+Z25 w1540576667
+Z26 8C:/altera/13.0/pci_com_lpt_usb_eth/simulation/modelsim/pci_com_lpt_usb_eth.vt
+Z27 FC:/altera/13.0/pci_com_lpt_usb_eth/simulation/modelsim/pci_com_lpt_usb_eth.vt
+L0 28
+R7
+r1
+!s85 0
+31
+!s108 1540576690.043000
+!s107 C:/altera/13.0/pci_com_lpt_usb_eth/simulation/modelsim/pci_com_lpt_usb_eth.vt|
+Z28 !s90 -reportprogress|300|-work|work|C:/altera/13.0/pci_com_lpt_usb_eth/simulation/modelsim/pci_com_lpt_usb_eth.vt|
+!s101 -O0
+R9
+vpci_controller
+Z29 !s100 Oj6GFOT@Q@3m;57X=kRLF3
+Z30 IYSz3P;McI@NX92d9_kij33
+Z31 VEUf?QAa6KN_Sn]e83<fhQ0
+R3
+Z32 w1538401734
+Z33 8C:/altera/13.0/pci_com_lpt_usb_eth/pci_controller.v
+Z34 FC:/altera/13.0/pci_com_lpt_usb_eth/pci_controller.v
+L0 1
+R7
+r1
+31
+Z35 !s90 -reportprogress|300|-work|work|C:/altera/13.0/pci_com_lpt_usb_eth/pci_controller.v|
+R9
+Z36 !s108 1540576688.121000
+Z37 !s107 C:/altera/13.0/pci_com_lpt_usb_eth/pci_controller.v|
+!i10b 1
+!s85 0
+!s101 -O0

@@ -1,0 +1,384 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "09/30/2018 22:03:25"
+                                                                                
+// Verilog Test Bench template for design : pci_com_lpt_usb_eth
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 1 ps
+module pci_com_lpt_usb_eth_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg _I_FRAME;
+reg _I_IRDY;
+reg _I_RESET;
+reg [3:0] I_CBE;
+reg I_CLK;
+reg I_CLK_DEV;
+reg I_CTS;
+reg I_IDSEL;
+reg I_RX;
+reg [31:0] treg_IO_AD;
+// wires                                               
+wire _O_DEVSEL;
+wire _O_TRDY;
+wire [31:0]  IO_AD;
+wire O_DEV0BAR4SEL;
+wire O_DEV1BAR1SEL;
+wire O_DTR;
+wire O_INT;
+wire O_PAR;
+wire O_TX;
+
+reg CLK_RX;
+
+// assign statements (if any)                          
+assign IO_AD = treg_IO_AD;
+pci_com_lpt_usb_eth i1 (
+// port map - connection between master ports and signals/registers   
+	._I_FRAME(_I_FRAME),
+	._I_IRDY(_I_IRDY),
+	._I_RESET(_I_RESET),
+	._O_DEVSEL(_O_DEVSEL),
+	._O_TRDY(_O_TRDY),
+	.I_CBE(I_CBE),
+	.I_CLK(I_CLK),
+	.I_CLK_DEV(I_CLK_DEV),
+	.I_CTS(I_CTS),
+	.I_IDSEL(I_IDSEL),
+	.I_RX(I_RX),
+	.IO_AD(IO_AD),
+	.O_DEV0BAR4SEL(O_DEV0BAR4SEL),
+	.O_DEV1BAR1SEL(O_DEV1BAR1SEL),
+	.O_DTR(O_DTR),
+	.O_INT(O_INT),
+	.O_PAR(O_PAR),
+	.O_TX(O_TX)
+);
+always
+#15.1 I_CLK = ~I_CLK;
+
+always
+#10.4 I_CLK_DEV = ~I_CLK_DEV;
+
+always
+#42 CLK_RX = ~CLK_RX;
+
+initial                                                
+begin                        
+I_RX = 1;
+CLK_RX = 0;
+I_CLK = 0; 
+I_CLK_DEV = 0; 
+treg_IO_AD = 32'hz;   
+I_IDSEL= 1;
+_I_IRDY = 1;
+_I_RESET = 1;
+I_CBE = 0;
+I_CTS = 1;
+_I_RESET = 1;
+#1
+_I_RESET = 0;
+#10
+_I_RESET = 1; 
+#10
+_I_FRAME = 1;
+#30
+_I_RESET = 0;
+#90
+_I_RESET = 1;
+read_config_space(32'h10000);  
+read_config_space(32'h10100);              
+write_config_space(32'h10004,32'hCFF800FF);  
+read_config_space(32'h10004);       
+write_config_space(32'h10104,32'hECBA50F3);  
+read_config_space(32'h10104);         
+write_config_space(32'h10020,32'hFFFFFFFF);   
+read_config_space(32'h10020);        
+write_config_space(32'h10020,32'h0000BC00);      
+read_config_space(32'h10020);               
+
+write_config_space(32'h10110,32'hFFFFFFFF);    
+read_config_space(32'h10110);       
+write_config_space(32'h10110,32'h0000AC00);    
+read_config_space(32'h10110);         
+
+write_config_space(32'h10114,32'hFFFFFFFF);     
+read_config_space(32'h10114);        
+write_config_space(32'h10114,32'h0000CC00);  
+read_config_space(32'h10114);    
+
+write_config_space(32'h10508,32'h0000CC00);  
+read_config_space(32'h10508);    
+
+write_config_space(32'h00000100,32'h0000CC00);  
+read_config_space(32'h00000100);   
+
+write_config_space(32'h00000000,32'h0000CC00);  
+read_config_space(32'h00000000);   
+
+write_io_space(32'h0000CC00,32'h00AD0000,4'hB);
+write_io_space(32'h0000CC02,32'h00002A00,4'hD);
+read_io_space(32'h0000CC02,4'h7);
+read_io_space(32'h0000CC01,4'hD);
+write_io_space(32'h00000000,32'h00AD0000,4'hB);
+write_io_space(32'h00000002,32'h00002A00,4'hD);
+read_io_space(32'h00000000,4'h7);
+read_io_space(32'h00000002,4'hD);
+#1000
+//обращения к контроллеру COM драйвером               
+write_io_space(32'h0000AC03,32'h00830000,4'hB);
+write_io_space(32'h0000AC00,32'h00010000,4'hB);
+write_io_space(32'h0000AC01,32'h00000000,4'hB);
+write_io_space(32'h0000AC03,32'h00000300,4'hD);
+read_io_space(32'h0000AC03,4'hD);
+write_io_space(32'h0000AC04,32'h00080000,4'hB);
+//Передача
+write_io_space(32'h0000AC01,32'h00000000,4'hB);
+write_io_space(32'h0000AC01,32'h000F0000,4'hB);
+#500
+read_io_space(32'h0000AC02,4'hD);
+#15
+write_io_space(32'h0000AC00,32'h00AA0000,4'hB);
+write_io_space(32'h0000AC00,32'h00CC0000,4'hB);
+write_io_space(32'h0000AC00,32'h00120000,4'hB);
+read_io_space(32'h0000AC02,4'hD);
+read_io_space(32'h0000AC02,4'hD);
+read_io_space(32'h0000AC05,4'hD);
+read_io_space(32'h0000AC06,4'hD);
+#1000
+//Прием              
+read_io_space(32'h0000AC00,4'hD);           
+rx_send(8'h55);
+rx_send(8'hAB);
+rx_send(8'hCD);
+#10000
+read_io_space(32'h0000AC02,4'hD);
+#40000
+read_io_space(32'h0000AC02,4'hD);
+read_io_space(32'h0000AC00,4'hD);    
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC00,4'hD);  
+rx_send(8'h00);
+rx_send(8'h11);
+rx_send(8'h22);
+rx_send(8'h33);
+rx_send(8'h44);
+rx_send(8'h55);
+rx_send(8'h66);
+rx_send(8'h77);
+rx_send(8'h88);
+rx_send(8'h99);
+rx_send(8'hAA);
+rx_send(8'hBB);
+rx_send(8'hCC);
+rx_send(8'hDD);
+//OVERRUN
+rx_send(8'hEE);
+rx_send(8'hFF);
+#50000
+read_io_space(32'h0000AC02,4'hD);
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);   
+read_io_space(32'h0000AC00,4'hD);  
+read_io_space(32'h0000AC05,4'hD);      
+#1000
+write_io_space(32'h0000AC01,32'h00000000,4'hB);
+write_io_space(32'h0000AC01,32'h000F0000,4'hB);              
+write_io_space(32'h0000AC00,32'h006B0000,4'hB);
+read_io_space(32'h0000AC02,4'hD);
+read_io_space(32'h0000AC02,4'hD);
+read_io_space(32'h0000AC05,4'hD);
+rx_send_brk_dtcd();
+#1000
+read_io_space(32'h0000AC05,4'hD);
+#1000
+write_io_space(32'h0000AC04,32'h00180000,4'hB);
+#1000
+write_io_space(32'h0000AC04,32'h00190000,4'hB);
+#15000
+$display("Running testbench");                       
+end      
+
+task write_io_space(input [31:0] addr,input [31:0] dword,input [3:0] n_byte);
+ begin
+     #90.6
+	 treg_IO_AD = addr;
+    I_CBE = 4'h3;
+	 _I_FRAME = 0;
+	 #30.3
+	 _I_FRAME = 1;
+	 treg_IO_AD = dword;
+	 I_CBE = n_byte;
+	 _I_IRDY = 0;
+	 #99
+	 _I_IRDY = 1;
+	 #30
+	treg_IO_AD = 32'hz; 
+ end
+endtask                                              
+
+task read_io_space(input [31:0] addr,input [3:0] n_byte);
+ begin
+    #90.6
+	 treg_IO_AD = addr;
+    I_CBE = 4'h2;
+	 _I_FRAME = 0;
+	 #30.3
+	 _I_FRAME = 1;
+	 treg_IO_AD = 32'hz;
+	 I_CBE = n_byte;
+	 _I_IRDY = 0;
+	 #99
+	 _I_IRDY = 1;
+	 #30
+	treg_IO_AD = 32'hz; 
+ end
+endtask
+ 
+
+task read_config_space(input [31:0] addr);
+ begin
+    #90.6
+	 treg_IO_AD = addr;
+    I_CBE = 4'hA;
+	 _I_FRAME = 0;
+	 I_IDSEL = 1;
+	 #30.3
+	 I_IDSEL = 0;
+	 _I_FRAME = 1;
+	 treg_IO_AD = 32'hz;
+	 I_CBE = 4'h0;
+	 _I_IRDY = 0;
+	 #99
+	 _I_IRDY = 1;
+	 	#30
+	treg_IO_AD = 32'hz; 
+ end
+endtask
+
+task write_config_space(input [31:0] addr,input [31:0] dword);
+ begin
+    #90.6
+	 treg_IO_AD = addr;
+    I_CBE = 4'hB;
+	 _I_FRAME = 0;
+	 I_IDSEL = 1;
+	 #30.3
+	 I_IDSEL = 0;
+	 _I_FRAME = 1;
+	 treg_IO_AD = dword;
+	 I_CBE = 4'h0;
+	 _I_IRDY = 0;
+	 #99
+	 _I_IRDY = 1;
+	 	#30
+	treg_IO_AD = 32'hz; 
+ end
+endtask       
+
+task rx_send(input [7:0] sbyte);
+begin
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = sbyte[0];
+@(posedge CLK_RX)
+I_RX = sbyte[1];
+@(posedge CLK_RX)
+I_RX = sbyte[2];
+@(posedge CLK_RX)
+I_RX = sbyte[3];
+@(posedge CLK_RX)
+I_RX = sbyte[4];
+@(posedge CLK_RX)
+I_RX = sbyte[5];
+@(posedge CLK_RX)
+I_RX = sbyte[6];
+@(posedge CLK_RX)
+I_RX = sbyte[7];
+@(posedge CLK_RX)
+I_RX = 1;
+end
+endtask  
+
+task rx_send_brk_dtcd();
+begin
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 0;
+@(posedge CLK_RX)
+I_RX = 1;
+end
+endtask   
+                                              
+endmodule
+

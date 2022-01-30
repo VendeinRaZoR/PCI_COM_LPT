@@ -1,0 +1,25 @@
+module PCI_controller(
+input wire clk, //С‚Р°РєС‚РѕРІС‹Р№ СЃРёРіРЅР°Р»
+inout [31:0] addr_data, //С€РёРЅР° РґР°С‚Р°-Р°РґСЂРµСЃ
+inout [3:0] cbe, //РґР°РЅРЅС‹Рµ вЂ“ РІС‹Р±РѕСЂ Р±Р°Р№С‚РѕРІ
+//output reg [31:0] out_add_data,
+//output reg [3:0] out_cbe,
+input wire idsel, // РґР»СЏ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹С… РїРµСЂРµРґР°С‡
+input wire frame, // СЃРёРіРЅР°Р» РЅР°С‡Р°Р»Р° С‚СЂР°РЅР·Р°РєС†РёРё
+input wire irdy, //СЃРёРіРЅР°Р» РіРѕС‚РѕРІРЅРѕСЃС‚Рё РІРµРґСѓС‰РµРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР°
+inout devsel, // СЃРёРіРЅР°Р», С‡С‚Рѕ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ РІС‹Р±СЂР°РЅРѕ
+inout trdy, // СЃРёРіРЅР°Р», С‡С‚Рѕ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ РіРѕС‚РѕРІРѕ
+//inout tri par, // РєРѕРЅС‚СЂРѕР»СЊ С‡РµС‚РЅРѕСЃС‚Рё
+input wire reset, //СЃР±СЂРѕСЃ СѓСЃС‚СЂРѕР№СЃС‚РІР° (РІ С‡Р°СЃС‚РЅРѕСЃС‚Рё РјР°С€РёРЅС‹ СЃРѕСЃС‚РѕСЏРЅРёР№)
+input wire baudclk_221184kHz,
+input wire RX1,
+input wire CTS,
+input wire DSR,
+input wire RI,
+input wire DCD,
+output par,
+output reg inta,
+output wire TX1,
+output wire RTS,
+output wire DTR
+);

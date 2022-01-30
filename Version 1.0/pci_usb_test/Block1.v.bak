@@ -1,0 +1,422 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// PROGRAM		"Quartus II 32-bit"
+// VERSION		"Version 13.0.0 Build 156 04/24/2013 SJ Web Edition"
+// CREATED		"Fri Jun 01 05:58:55 2018"
+
+module Block1(
+	clk,
+	irdy,
+	frame,
+	idsel,
+	reset,
+	intd,
+	RX1,
+	CTS,
+	intc,
+	intb,
+	ACK,
+	BUSY,
+	PE,
+	SELT,
+	ERR,
+	baudclk_221184kHz,
+	cbe,
+	led2,
+	TX1,
+	RTS,
+	inta,
+	RS422_TX_MINUS,
+	par,
+	trdy,
+	devsel,
+	STROBE,
+	SIN,
+	AFD,
+	INIT,
+	ad,
+	LPT_DATA
+);
+
+
+input wire	clk;
+input wire	irdy;
+input wire	frame;
+input wire	idsel;
+input wire	reset;
+input wire	intd;
+input wire	RX1;
+input wire	CTS;
+input wire	intc;
+input wire	intb;
+input wire	ACK;
+input wire	BUSY;
+input wire	PE;
+input wire	SELT;
+input wire	ERR;
+input wire	baudclk_221184kHz;
+input wire	[3:0] cbe;
+output wire	led2;
+output wire	TX1;
+output wire	RTS;
+output wire	inta;
+output wire	RS422_TX_MINUS;
+inout wire	par;
+inout wire	trdy;
+inout wire	devsel;
+inout wire	STROBE;
+inout wire	SIN;
+inout wire	AFD;
+inout wire	INIT;
+inout wire	[31:0] ad;
+inout wire	[7:0] LPT_DATA;
+
+wire	SYNTHESIZED_WIRE_0;
+wire	SYNTHESIZED_WIRE_34;
+wire	[7:0] SYNTHESIZED_WIRE_35;
+wire	[7:0] SYNTHESIZED_WIRE_36;
+wire	[3:0] SYNTHESIZED_WIRE_37;
+wire	SYNTHESIZED_WIRE_5;
+wire	SYNTHESIZED_WIRE_6;
+wire	SYNTHESIZED_WIRE_7;
+wire	SYNTHESIZED_WIRE_8;
+wire	SYNTHESIZED_WIRE_9;
+wire	[31:0] SYNTHESIZED_WIRE_10;
+wire	SYNTHESIZED_WIRE_11;
+wire	SYNTHESIZED_WIRE_12;
+wire	SYNTHESIZED_WIRE_13;
+wire	SYNTHESIZED_WIRE_14;
+wire	SYNTHESIZED_WIRE_15;
+wire	SYNTHESIZED_WIRE_16;
+wire	SYNTHESIZED_WIRE_17;
+wire	SYNTHESIZED_WIRE_18;
+wire	SYNTHESIZED_WIRE_19;
+wire	SYNTHESIZED_WIRE_38;
+wire	SYNTHESIZED_WIRE_39;
+wire	[31:0] SYNTHESIZED_WIRE_24;
+wire	[31:0] SYNTHESIZED_WIRE_25;
+wire	[31:0] SYNTHESIZED_WIRE_26;
+wire	[0:31] SYNTHESIZED_WIRE_40;
+wire	SYNTHESIZED_WIRE_29;
+
+assign	TX1 = SYNTHESIZED_WIRE_11;
+assign	SYNTHESIZED_WIRE_39 = 0;
+assign	SYNTHESIZED_WIRE_40 = 0;
+
+
+
+
+
+LPT_controller_82550	b2v_inst1(
+	.clk(clk),
+	.irdy(irdy),
+	.reset(reset),
+	.ACK(ACK),
+	.BUSY(BUSY),
+	.PE(PE),
+	.SELT(SELT),
+	.ERR(ERR),
+	.is_LPT_configured(SYNTHESIZED_WIRE_0),
+	.is_LPT_iospace(SYNTHESIZED_WIRE_34),
+	.AFD(AFD),
+	.INIT(INIT),
+	.SIN(SIN),
+	.STROBE(STROBE),
+	.addr_data_buf_in_byte(SYNTHESIZED_WIRE_35),
+	.data(LPT_DATA),
+	.in_addr_bar_offset_w_io(SYNTHESIZED_WIRE_36),
+	.in_command(SYNTHESIZED_WIRE_37),
+	.devsel(SYNTHESIZED_WIRE_13),
+	.trdy(SYNTHESIZED_WIRE_6),
+	
+	.interrupt_pin(SYNTHESIZED_WIRE_9),
+	.control(SYNTHESIZED_WIRE_16),
+	
+	
+	
+	
+	
+	.out_add_data_io(SYNTHESIZED_WIRE_26));
+	defparam	b2v_inst1.LPTF_IDLE = 1;
+	defparam	b2v_inst1.LPTF_PCR_READ = 5;
+	defparam	b2v_inst1.LPTF_PCR_WRITE = 6;
+	defparam	b2v_inst1.LPTF_PDR_WRITE = 3;
+	defparam	b2v_inst1.LPTF_PIR_READ = 2;
+	defparam	b2v_inst1.LPTF_PSR_READ = 4;
+	defparam	b2v_inst1.LPTF_PXR_READ = 7;
+	defparam	b2v_inst1.LPTF_PXR_WRITE = 8;
+	defparam	b2v_inst1.LPTF_RESET = 0;
+	defparam	b2v_inst1.TRDY_DELAY = 0;
+
+
+assign	trdy = SYNTHESIZED_WIRE_5 & SYNTHESIZED_WIRE_6 & SYNTHESIZED_WIRE_7;
+
+assign	inta = SYNTHESIZED_WIRE_8 & SYNTHESIZED_WIRE_9;
+
+assign	led2 =  ~reset;
+
+
+PCI_target_controller	b2v_inst4(
+	.clk(clk),
+	.idsel(idsel),
+	.frame(frame),
+	.irdy(irdy),
+	.reset(reset),
+	.devsel(SYNTHESIZED_WIRE_12),
+	.trdy(SYNTHESIZED_WIRE_7),
+	.addr_data(SYNTHESIZED_WIRE_10),
+	.cbe(cbe),
+	
+	
+	
+	
+	
+	
+	
+	.BAR0_DEVICE1_configured(SYNTHESIZED_WIRE_29),
+	.BAR1_DEVICE1_configured(SYNTHESIZED_WIRE_0),
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	.control(SYNTHESIZED_WIRE_15),
+	.is_config_space(SYNTHESIZED_WIRE_19),
+	
+	
+	
+	
+	
+	
+	.is_BAR0_DEVICE1_address(SYNTHESIZED_WIRE_38),
+	.is_BAR1_DEVICE1_address(SYNTHESIZED_WIRE_34),
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	.addr_data_buf_in_byte(SYNTHESIZED_WIRE_35),
+	
+	
+	
+	.in_addr_offset_w_io(SYNTHESIZED_WIRE_36),
+	.in_command(SYNTHESIZED_WIRE_37),
+	.out_add_data_cs(SYNTHESIZED_WIRE_24));
+	defparam	b2v_inst4.CLASSCODE_DEVICE0 = 32'b00001100000000110000000001010000;
+	defparam	b2v_inst4.CLASSCODE_DEVICE1 = 32'b00000111000000000000001000001111;
+	defparam	b2v_inst4.CLASSCODE_DEVICE2 = 32'b00000000000000000000000000000000;
+	defparam	b2v_inst4.CLASSCODE_DEVICE3 = 32'b00000000000000000000000000000000;
+	defparam	b2v_inst4.COMMAND_MASK_DEVICE0 = 16'b0000000000000011;
+	defparam	b2v_inst4.COMMAND_MASK_DEVICE1 = 16'b0000000000000011;
+	defparam	b2v_inst4.COMMAND_MASK_DEVICE2 = 16'b0000000000000011;
+	defparam	b2v_inst4.COMMAND_MASK_DEVICE3 = 16'b0000000000000011;
+	defparam	b2v_inst4.CONFIGURATION_READ = 4;
+	defparam	b2v_inst4.CONFIGURATION_WRITE = 5;
+	defparam	b2v_inst4.CS_BAR0_READ_DEVICE0 = 5;
+	defparam	b2v_inst4.CS_BAR0_READ_DEVICE1 = 39;
+	defparam	b2v_inst4.CS_BAR0_WRITE_DEVICE0 = 22;
+	defparam	b2v_inst4.CS_BAR0_WRITE_DEVICE1 = 54;
+	defparam	b2v_inst4.CS_BAR1_READ_DEVICE0 = 6;
+	defparam	b2v_inst4.CS_BAR1_READ_DEVICE1 = 40;
+	defparam	b2v_inst4.CS_BAR1_WRITE_DEVICE0 = 23;
+	defparam	b2v_inst4.CS_BAR1_WRITE_DEVICE1 = 55;
+	defparam	b2v_inst4.CS_BAR2_READ_DEVICE0 = 7;
+	defparam	b2v_inst4.CS_BAR2_READ_DEVICE1 = 41;
+	defparam	b2v_inst4.CS_BAR2_WRITE_DEVICE0 = 24;
+	defparam	b2v_inst4.CS_BAR2_WRITE_DEVICE1 = 56;
+	defparam	b2v_inst4.CS_BAR3_READ_DEVICE0 = 8;
+	defparam	b2v_inst4.CS_BAR3_READ_DEVICE1 = 42;
+	defparam	b2v_inst4.CS_BAR3_WRITE_DEVICE0 = 25;
+	defparam	b2v_inst4.CS_BAR3_WRITE_DEVICE1 = 57;
+	defparam	b2v_inst4.CS_BAR4_READ_DEVICE0 = 9;
+	defparam	b2v_inst4.CS_BAR4_READ_DEVICE1 = 43;
+	defparam	b2v_inst4.CS_BAR4_WRITE_DEVICE0 = 26;
+	defparam	b2v_inst4.CS_BAR4_WRITE_DEVICE1 = 58;
+	defparam	b2v_inst4.CS_BAR5_READ_DEVICE0 = 10;
+	defparam	b2v_inst4.CS_BAR5_READ_DEVICE1 = 44;
+	defparam	b2v_inst4.CS_BAR5_WRITE_DEVICE0 = 27;
+	defparam	b2v_inst4.CS_BAR5_WRITE_DEVICE1 = 59;
+	defparam	b2v_inst4.CS_BIST_HEADER_LAT_CACH_READ_DEVICE0 = 4;
+	defparam	b2v_inst4.CS_BIST_HEADER_LAT_CACH_READ_DEVICE1 = 38;
+	defparam	b2v_inst4.CS_BIST_HEADER_LAT_CACH_WRITE_DEVICE0 = 21;
+	defparam	b2v_inst4.CS_BIST_HEADER_LAT_CACH_WRITE_DEVICE1 = 53;
+	defparam	b2v_inst4.CS_CAP_POINTER_READ_DEVICE0 = 14;
+	defparam	b2v_inst4.CS_CAP_POINTER_READ_DEVICE1 = 48;
+	defparam	b2v_inst4.CS_CAP_POINTER_WRITE_DEVICE0 = 31;
+	defparam	b2v_inst4.CS_CAP_POINTER_WRITE_DEVICE1 = 63;
+	defparam	b2v_inst4.CS_CARDBUS_READ_DEVICE0 = 11;
+	defparam	b2v_inst4.CS_CARDBUS_READ_DEVICE1 = 45;
+	defparam	b2v_inst4.CS_CARDBUS_WRITE_DEVICE0 = 28;
+	defparam	b2v_inst4.CS_CARDBUS_WRITE_DEVICE1 = 60;
+	defparam	b2v_inst4.CS_CLASSCODE_READ_DEVICE0 = 4;
+	defparam	b2v_inst4.CS_CLASSCODE_READ_DEVICE1 = 37;
+	defparam	b2v_inst4.CS_CLASSCODE_WRITE_DEVICE0 = 20;
+	defparam	b2v_inst4.CS_CLASSCODE_WRITE_DEVICE1 = 52;
+	defparam	b2v_inst4.CS_EXPANSION_ROM_BAR_READ_DEVICE0 = 13;
+	defparam	b2v_inst4.CS_EXPANSION_ROM_BAR_READ_DEVICE1 = 47;
+	defparam	b2v_inst4.CS_EXPANSION_ROM_BAR_WRITE_DEVICE0 = 30;
+	defparam	b2v_inst4.CS_EXPANSION_ROM_BAR_WRITE_DEVICE1 = 62;
+	defparam	b2v_inst4.CS_IDLE = 1;
+	defparam	b2v_inst4.CS_LAT_INTERRUPT_READ_DEVICE0 = 15;
+	defparam	b2v_inst4.CS_LAT_INTERRUPT_READ_DEVICE1 = 49;
+	defparam	b2v_inst4.CS_LAT_INTERRUPT_WRITE_DEVICE0 = 32;
+	defparam	b2v_inst4.CS_LAT_INTERRUPT_WRITE_DEVICE1 = 64;
+	defparam	b2v_inst4.CS_NULL = 125;
+	defparam	b2v_inst4.CS_READ = 2;
+	defparam	b2v_inst4.CS_RESERVED = 126;
+	defparam	b2v_inst4.CS_RESET = 0;
+	defparam	b2v_inst4.CS_STATUSCOMMAND_READ_DEVICE0 = 3;
+	defparam	b2v_inst4.CS_STATUSCOMMAND_READ_DEVICE1 = 36;
+	defparam	b2v_inst4.CS_STATUSCOMMAND_WRITE_DEVICE0 = 19;
+	defparam	b2v_inst4.CS_STATUSCOMMAND_WRITE_DEVICE1 = 51;
+	defparam	b2v_inst4.CS_SUBSYSTEM_VENDOR_READ_DEVICE0 = 12;
+	defparam	b2v_inst4.CS_SUBSYSTEM_VENDOR_READ_DEVICE1 = 46;
+	defparam	b2v_inst4.CS_SUBSYSTEM_VENDOR_WRITE_DEVICE0 = 29;
+	defparam	b2v_inst4.CS_SUBSYSTEM_VENDOR_WRITE_DEVICE1 = 61;
+	defparam	b2v_inst4.CS_VIDPID_READ_DEVICE1 = 35;
+	defparam	b2v_inst4.CS_VIDPID_WRITE_DEVICE0 = 18;
+	defparam	b2v_inst4.CS_VIDPID_WRITE_DEVICE1 = 50;
+	defparam	b2v_inst4.IDLE = 1;
+	defparam	b2v_inst4.INT_PIN_DEVICE0 = 32'b00000000000000000000001000000000;
+	defparam	b2v_inst4.INT_PIN_DEVICE1 = 32'b00000000000000000000000100000000;
+	defparam	b2v_inst4.INT_PIN_DEVICE2 = 32'b00000000000000000000001100000000;
+	defparam	b2v_inst4.INT_PIN_DEVICE3 = 32'b00000000000000000000010000000000;
+	defparam	b2v_inst4.MULTIFUNCTIONAL_DEVICE0 = 32'b00000000100000000000000000000000;
+	defparam	b2v_inst4.MULTIFUNCTIONAL_DEVICE1 = 32'b00000000100000000000000000000000;
+	defparam	b2v_inst4.MULTIFUNCTIONAL_DEVICE2 = 32'b00000000100000000000000000000000;
+	defparam	b2v_inst4.MULTIFUNCTIONAL_DEVICE3 = 32'b00000000100000000000000000000000;
+	defparam	b2v_inst4.READ_IO = 2;
+	defparam	b2v_inst4.RESET = 6;
+	defparam	b2v_inst4.STATUS_MASK_DEVICE0 = 16'b0000001010001000;
+	defparam	b2v_inst4.STATUS_MASK_DEVICE1 = 16'b0000001010001000;
+	defparam	b2v_inst4.STATUS_MASK_DEVICE2 = 16'b0000001010001000;
+	defparam	b2v_inst4.STATUS_MASK_DEVICE3 = 16'b0000001010001000;
+	defparam	b2v_inst4.TRDY_DELAY = 0;
+	defparam	b2v_inst4.VIDPID_DEVICE0 = 32'b11011110101011011011111011101111;
+	defparam	b2v_inst4.VIDPID_DEVICE1 = 32'b01010000010100110100001101001000;
+	defparam	b2v_inst4.VIDPID_DEVICE2 = 32'b00000000000000000000000000000000;
+	defparam	b2v_inst4.VIDPID_DEVICE3 = 32'b00000000000000000000000000000000;
+	defparam	b2v_inst4.WRITE_IO = 3;
+
+assign	RS422_TX_MINUS =  ~SYNTHESIZED_WIRE_11;
+
+assign	devsel = SYNTHESIZED_WIRE_12 & SYNTHESIZED_WIRE_13 & SYNTHESIZED_WIRE_14;
+
+assign	SYNTHESIZED_WIRE_18 = SYNTHESIZED_WIRE_15 & SYNTHESIZED_WIRE_16 & SYNTHESIZED_WIRE_17;
+
+
+
+PCI_io	b2v_inst8(
+	.clk(clk),
+	.control(SYNTHESIZED_WIRE_18),
+	.is_config_space(SYNTHESIZED_WIRE_19),
+	.is_io_space0(SYNTHESIZED_WIRE_38),
+	.is_io_space1(SYNTHESIZED_WIRE_34),
+	.is_io_space2(SYNTHESIZED_WIRE_39),
+	.is_io_space3(SYNTHESIZED_WIRE_39),
+	.in_cs_addr_data(SYNTHESIZED_WIRE_24),
+	.in_in_addr_data_buf(ad),
+	.in_io_addr_data_device0(SYNTHESIZED_WIRE_25),
+	.in_io_addr_data_device1(SYNTHESIZED_WIRE_26),
+	.in_io_addr_data_device2(SYNTHESIZED_WIRE_40),
+	.in_io_addr_data_device3(SYNTHESIZED_WIRE_40),
+	.out_addr_data(ad),
+	.out_in_addr_data_buf(SYNTHESIZED_WIRE_10));
+
+
+COM_controller_16C550	b2v_inst9(
+	.clk(clk),
+	.irdy(irdy),
+	.reset(reset),
+	.baudclk_221184kHz(baudclk_221184kHz),
+	.RX1(RX1),
+	.CTS(CTS),
+	
+	
+	
+	.is_COM_configured(SYNTHESIZED_WIRE_29),
+	.is_COM_iospace(SYNTHESIZED_WIRE_38),
+	.addr_data_buf_in_byte(SYNTHESIZED_WIRE_35),
+	.in_addr_bar_offset_w_io(SYNTHESIZED_WIRE_36),
+	.in_command(SYNTHESIZED_WIRE_37),
+	.devsel(SYNTHESIZED_WIRE_14),
+	.trdy(SYNTHESIZED_WIRE_5),
+	
+	.interrupt_pin(SYNTHESIZED_WIRE_8),
+	.TX1(SYNTHESIZED_WIRE_11),
+	.RTS(RTS),
+	
+	.control(SYNTHESIZED_WIRE_17),
+	.out_add_data_io(SYNTHESIZED_WIRE_25));
+	defparam	b2v_inst9.COMF_DLL_READ = 15;
+	defparam	b2v_inst9.COMF_DLL_WRITE = 13;
+	defparam	b2v_inst9.COMF_DLM_READ = 16;
+	defparam	b2v_inst9.COMF_DLM_WRITE = 14;
+	defparam	b2v_inst9.COMF_FCR_WRITE = 7;
+	defparam	b2v_inst9.COMF_FIFO_READ = 27;
+	defparam	b2v_inst9.COMF_FIFO_WRITE = 24;
+	defparam	b2v_inst9.COMF_IDLE = 1;
+	defparam	b2v_inst9.COMF_IER_CHECK = 25;
+	defparam	b2v_inst9.COMF_IER_READ = 22;
+	defparam	b2v_inst9.COMF_IER_WRITE = 5;
+	defparam	b2v_inst9.COMF_IIR_READ = 17;
+	defparam	b2v_inst9.COMF_IIR_WRITE = 6;
+	defparam	b2v_inst9.COMF_LCR_READ = 19;
+	defparam	b2v_inst9.COMF_LCR_WRITE = 8;
+	defparam	b2v_inst9.COMF_LINE_INT_FLAG_RESET = 30;
+	defparam	b2v_inst9.COMF_LSR_READ = 20;
+	defparam	b2v_inst9.COMF_LSR_WRITE = 10;
+	defparam	b2v_inst9.COMF_MCR_READ = 18;
+	defparam	b2v_inst9.COMF_MCR_WRITE = 9;
+	defparam	b2v_inst9.COMF_MODEM_INT_FLAG_RESET = 29;
+	defparam	b2v_inst9.COMF_MSR_READ = 21;
+	defparam	b2v_inst9.COMF_MSR_WRITE = 11;
+	defparam	b2v_inst9.COMF_READ = 2;
+	defparam	b2v_inst9.COMF_RESET = 0;
+	defparam	b2v_inst9.COMF_RX_INT_FLAG_RESET = 28;
+	defparam	b2v_inst9.COMF_RX_READ = 3;
+	defparam	b2v_inst9.COMF_SCR_WRITE = 12;
+	defparam	b2v_inst9.COMF_TSR_ENABLE = 26;
+	defparam	b2v_inst9.COMF_TX_INT_FLAG_RESET = 23;
+	defparam	b2v_inst9.COMF_TX_WRITE = 4;
+	defparam	b2v_inst9.TRDY_DELAY = 0;
+
+
+endmodule

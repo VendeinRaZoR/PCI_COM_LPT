@@ -1,0 +1,551 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "06/01/2018 05:56:25"
+                                                                                
+// Verilog Test Bench template for design : Block1
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 1 ns
+module Block1_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg ACK;
+reg [31:0] treg_ad;
+reg treg_AFD;
+reg baudclk_221184kHz;
+reg BUSY;
+reg [3:0] cbe;
+reg clk;
+reg CTS;
+reg ERR;
+reg frame;
+reg idsel;
+reg intb;
+reg intc;
+reg intd;
+reg irdy;
+reg PE;
+reg reset;
+reg RX1;
+reg SELT;
+// wires                                               
+wire [31:0]  ad;
+wire AFD;
+wire devsel;
+wire INIT;
+wire inta;
+wire led2;
+wire [7:0]  LPT_DATA;
+wire par;
+wire RS422_TX_MINUS;
+wire RTS;
+wire SIN;
+wire STROBE;
+wire trdy;
+wire TX1;
+
+// assign statements (if any)                          
+assign ad = treg_ad;
+
+Block1 i1 (
+// port map - connection between master ports and signals/registers   
+	.ACK(ACK),
+	.ad(ad),
+	.AFD(AFD),
+	.baudclk_221184kHz(baudclk_221184kHz),
+	.BUSY(BUSY),
+	.cbe(cbe),
+	.clk(clk),
+	.CTS(CTS),
+	.devsel(devsel),
+	.ERR(ERR),
+	.frame(frame),
+	.idsel(idsel),
+	.INIT(INIT),
+	.inta(inta),
+	.intb(intb),
+	.intc(intc),
+	.intd(intd),
+	.irdy(irdy),
+	.led2(led2),
+	.LPT_DATA(LPT_DATA),
+	.par(par),
+	.PE(PE),
+	.reset(reset),
+	.RS422_TX_MINUS(RS422_TX_MINUS),
+	.RTS(RTS),
+	.RX1(RX1),
+	.SELT(SELT),
+	.SIN(SIN),
+	.STROBE(STROBE),
+	.trdy(trdy),
+	.TX1(TX1)
+);
+
+always
+#15.1 clk = ~clk;
+
+always
+#22.6 baudclk_221184kHz = ~baudclk_221184kHz;
+
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+#10
+clk = 0;
+baudclk_221184kHz = 0;   
+#30
+reset = 1;  
+#30
+reset = 0;  
+ACK = 0;
+BUSY = 0;
+ERR = 1;
+SELT = 1;
+PE = 0;
+treg_ad = 32'h00;
+cbe = 4'h00;
+idsel = 0;
+frame = 1;
+irdy = 1;
+#30    
+reset = 1;
+read_config_space(32'h10000);  
+read_config_space(32'h10100);              
+write_config_space(32'h10004,32'hCFF800FF);  
+read_config_space(32'h10004);       
+write_config_space(32'h10104,32'hECBA50F3);  
+read_config_space(32'h10104);         
+write_config_space(32'h10020,32'hFFFFFFFF);   
+read_config_space(32'h10020);        
+write_config_space(32'h10020,32'h0000BC00);      
+read_config_space(32'h10020);               
+
+write_config_space(32'h10110,32'hFFFFFFFF);    
+read_config_space(32'h10110);       
+write_config_space(32'h10110,32'h0000AC00);    
+read_config_space(32'h10110);         
+
+write_config_space(32'h10114,32'hFFFFFFFF);     
+read_config_space(32'h10114);        
+write_config_space(32'h10114,32'h0000CC00);  
+read_config_space(32'h10114);    
+
+write_io_space(32'h0000CC00,32'h00AD0000,4'hB);
+write_io_space(32'h0000CC02,32'h00002A00,4'hD);
+read_io_space(32'h0000CC02,4'h7);
+read_io_space(32'h0000CC01,4'hD);
+#3000
+ACK = 1;
+BUSY = 1;
+ERR = 0;
+SELT = 0;
+PE = 1;
+read_io_space(32'h0000CC01,4'hD);
+write_io_space(32'h0000CC02,32'h00001500,4'hD);
+
+
+#3000
+write_io_space(32'h0000AC01,32'h00000000,4'hB);
+write_io_space(32'h0000AC01,32'h000F0000,4'hB);
+read_io_space(32'h0000AC01,4'hD); 
+write_io_space(32'h0000AC04,32'h00080000,4'hB);
+read_io_space(32'h0000AC00,4'hD); 
+read_io_space(32'h0000AC01,4'hD); 
+read_io_space(32'h0000AC02,4'hD); 
+read_io_space(32'h0000AC03,4'hD); 
+read_io_space(32'h0000AC04,4'hD); 
+read_io_space(32'h0000AC05,4'hD); 
+read_io_space(32'h0000AC06,4'hD); 
+write_io_space(32'h0000AC03,32'h00009B00,4'hD);  
+write_io_space(32'h0000AC00,32'h00000100,4'hD);  
+write_io_space(32'h0000AC01,32'h00000000,4'hD);  
+read_io_space(32'h0000AC00,4'hD); 
+read_io_space(32'h0000AC01,4'hD); 
+write_io_space(32'h0000AC03,32'h00001B00,4'hD);  
+read_io_space(32'h0000AC02,4'hD);   
+read_io_space(32'h0000AC05,4'hD);
+write_io_space(32'h0000AC02,32'h0000C100,4'hD);  
+write_io_space(32'h0000AC01,32'h00000000,4'hB);
+write_io_space(32'h0000AC01,32'h000F0000,4'hB);
+
+#3000
+read_io_space(32'h0000AC02,4'hD); 
+write_io_space(32'h0000AC00,32'h00005500,4'hD);     
+write_io_space(32'h0000AC00,32'h0000BB00,4'hD);    
+read_io_space(32'h0000AC02,4'hD);        
+read_io_space(32'h0000AC05,4'hD);    
+#200000
+read_io_space(32'h0000AC02,4'hD);  
+read_io_space(32'h0000AC05,4'hD); 
+#100000
+RX_bytes();   
+#9000
+read_io_space(32'h0000AC02,4'hD); 
+read_io_space(32'h0000AC00,4'hD); 
+read_io_space(32'h0000AC00,4'hD);
+read_io_space(32'h0000AC00,4'hD);
+read_io_space(32'h0000AC00,4'hD);
+read_io_space(32'h0000AC00,4'hD);
+read_io_space(32'h0000AC00,4'hD);
+read_io_space(32'h0000AC00,4'hD);
+read_io_space(32'h0000AC00,4'hD);
+read_io_space(32'h0000AC00,4'hD);
+
+#18000
+read_io_space(32'h0000AC02,4'hD); 
+read_io_space(32'h0000AC00,4'hD); 
+// --> end                                             
+$display("Running testbench");                       
+end           
+
+task RX_bytes();
+begin
+//ABh
+#9000
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+//BCh
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+//BCh
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+//BCh error parity
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1; 
+//BCh error frame
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0; 
+#8680
+RX1 = 1;
+//BCh 1
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+read_io_space(32'h0000AC02,4'hD);  
+read_io_space(32'h0000AC05,4'hD); 
+//BCh 2
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+//BCh 3
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+//BCh 4
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+//BCh 5
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 0;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+#8680
+RX1 = 1;
+end
+endtask
+
+task write_io_space(input [31:0] addr,input [31:0] dword,input [3:0] n_byte);
+ begin
+     #90.6
+	 treg_ad = addr;
+    cbe = 4'h3;
+	 frame = 0;
+	 #30.3
+	 frame = 1;
+	 treg_ad = dword;
+	 cbe = n_byte;
+	 irdy = 0;
+	 #99
+	 irdy = 1;
+	 #30
+	treg_ad = 32'hz; 
+ end
+endtask
+
+task read_io_space(input [31:0] addr,input [3:0] n_byte);
+ begin
+    #90.6
+	 treg_ad = addr;
+    cbe = 4'h2;
+	 frame = 0;
+	 #30.3
+	 frame = 1;
+	 treg_ad = 32'hz;
+	 cbe = n_byte;
+	 irdy = 0;
+	 #99
+	 irdy = 1;
+	 #30
+	treg_ad = 32'hz; 
+ end
+endtask
+ 
+
+task read_config_space(input [31:0] addr);
+ begin
+    #90.6
+	 treg_ad = addr;
+    cbe = 4'hA;
+	 frame = 0;
+	 idsel = 1;
+	 #30.3
+	 idsel = 0;
+	 frame = 1;
+	 treg_ad = 32'hz;
+	 cbe = 4'h0;
+	 irdy = 0;
+	 #99
+	 irdy = 1;
+	 	#30
+	treg_ad = 32'hz; 
+ end
+endtask
+
+task write_config_space(input [31:0] addr,input [31:0] dword);
+ begin
+    #90.6
+	 treg_ad = addr;
+    cbe = 4'hB;
+	 frame = 0;
+	 idsel = 1;
+	 #30.3
+	 idsel = 0;
+	 frame = 1;
+	 treg_ad = dword;
+	 cbe = 4'h0;
+	 irdy = 0;
+	 #99
+	 irdy = 1;
+	 	#30
+	treg_ad = 32'hz; 
+ end
+endtask
+                                         
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+                                                       
+@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule
+

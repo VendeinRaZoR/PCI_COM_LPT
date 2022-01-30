@@ -1,0 +1,842 @@
+//Примечание по текущей версии:
+//В принципе, контроллер готов, однако на некоторых скоростях данные могут быть некорректны иногда
+//GATED-CLOCK - ЭТО ЗЛО !!!
+`timescale 1 ns/ 1 ps
+module com_controller(
+input wire I_CLK_BUS, 
+input wire I_CLK_DEV,
+input wire _I_RESET, 
+input wire I_OE_WE_DEV,
+input wire I_RX,
+input wire I_CTS,
+input wire I_DSR,
+input wire I_RI,
+input wire I_DCD,
+input wire I_DEVSEL,
+input wire [31:0] I_ADDR,
+input wire [3:0] I_BE,
+output O_PAR,
+output O_INTX,
+output reg O_TX,
+output wire O_RTS,
+output wire O_DTR,
+input I_DEVDATA,
+inout [31:0] IO_AD
+);
+
+reg [31:0] O_AD;
+wire [31:0] I_AD;
+
+reg [7:0] adnbyte;
+
+reg [7:0] RBR_COM1;
+reg [7:0] THR_COM1;
+reg [7:0] IER_COM1;
+reg [7:0] IIR_COM1;
+reg [7:0] LCR_COM1;
+reg [7:0] MCR_COM1;
+reg [7:0] SCR_COM1;
+reg [7:0] DLL_COM1;
+reg [7:0] DLM_COM1;
+reg [7:0] FCR_COM1;
+reg [7:0] LSR_COM1;
+reg [7:0] MSR_COM1;
+reg [11:0] TSR_COM1;
+reg [10:0] RSR_COM1;
+reg rx_done;
+reg [26:0] rx_timeout_cntr;
+
+reg rx_in[1:0];
+
+reg rx_shift_en;
+
+reg [7:0] FIFO_TX_COM1 [15:0];
+reg [7:0] FIFO_RX_COM1 [15:0];
+
+reg [3:0] fifo_tx_raddr;
+reg [3:0] fifo_tx_waddr;
+
+reg [3:0] fifo_rx_raddr;
+reg [3:0] fifo_rx_waddr;
+
+reg [3:0] fifo_rx_itrig;
+reg [3:0] fifo_rx_itrig_cntr;
+
+reg [1:0] par_err;
+reg [1:0] frame_err;
+
+reg fifo_tx_empty;
+reg fifo_rx_empty;
+
+//reg [1:0] CTS_COM1;
+//reg [1:0] DSR_COM1;
+//reg [1:0] RI_COM1;
+//reg [1:0] DCD_COM1;
+
+reg strb_tx;
+reg strb_rx;
+
+reg [21:0] strb_cntr_tx;
+reg [21:0] strb_cntr_rx;
+
+wire rx_edge;
+wire ier_1_posedge;
+
+//wire parity_error_rising_edge;
+//wire framing_error_rising_edge;
+
+//wire CTS_COM1_changed;
+//wire DSR_COM1_changed;
+//wire RI_COM1_changed;
+//wire DCD_COM1_changed;
+
+wire COM1_RESET;
+
+wire int_cond; 
+wire int_tx_cond; 
+wire int_rx_cond;
+wire int_rx_itrig_cond;
+wire int_modem_cond;
+wire int_line_cond;
+
+//wire FIFO_COM1_enable;
+
+reg ier_1_iflag;
+reg fifo_tx_empty_iflag;
+reg fifo_rx_int_trig_iflag;
+reg fifo_rx_timeout_iflag;
+
+reg CTS_COM1_changed_int_flag;
+reg DSR_COM1_changed_int_flag;
+reg RI_COM1_changed_int_flag;
+reg DCD_COM1_changed_int_flag;
+
+reg par_err_iflag;
+reg frame_err_iflag;
+
+reg [9:0] ioaddr_dcdr;
+
+reg int_running;
+
+assign IO_AD = I_OE_WE_DEV ? O_AD : 32'hz;
+assign I_AD = !I_OE_WE_DEV ? IO_AD : 32'hz;
+
+always@*
+begin
+case(I_BE)
+4'b0001: adnbyte = I_AD[7:0];
+4'b0010: adnbyte = I_AD[15:8];
+4'b0100: adnbyte = I_AD[23:16];
+4'b1000: adnbyte = I_AD[31:24];
+default: 
+adnbyte = I_AD[7:0];
+endcase
+end
+
+/*always@(posedge baudclk_96000kHz)
+begin
+CTS_COM1[0] <= CTS;
+CTS_COM1[1] <= CTS_COM1[0];
+DSR_COM1[0] <= DSR;
+DSR_COM1[1] <= DSR_COM1[0];
+RI_COM1[0] <= RI;
+RI_COM1[1] <= RI_COM1[0];
+DCD_COM1[0] <= DCD;
+DCD_COM1[1] <= DCD_COM1[0];
+end*/
+
+always@(posedge I_CLK_BUS)
+begin
+fifo_tx_empty <= (fifo_tx_waddr == fifo_tx_raddr);//для того чтобы не было gated-clock
+end
+
+always@(posedge I_CLK_DEV)
+begin
+fifo_rx_empty <= (fifo_rx_waddr == fifo_rx_raddr);//в прерывании по пустому передающему FIFO
+end //ну и для приемного FIFO тоже сделаем триггер, не жирно
+
+/*always@(posedge I_CLK_DEV) 
+begin
+parity_error[1] <= parity_error[0];
+framing_error[1] <= framing_error[0];
+end*/
+
+always@(posedge I_CLK_DEV) //частота кратная или большая 115200 в 3-4 раза для отслеживания
+begin											//данных на линии RX 
+rx_in[0] <= I_RX;
+rx_in[1] <= rx_in[0];
+end
+//фронты
+//assign parity_error_rising_edge = ~parity_error[1] & parity_error[0];
+//assign framing_error_rising_edge = ~framing_error[1] & framing_error[0];
+
+assign rx_edge = rx_in[1] ^ rx_in[0]; //все фронты должны появляться по сигналу 221184 кГц 
+															//или сигналу, большему чем 115200 или 1500000 в раза 3-4
+assign ier_1_posedge = (~IER_COM1[1] & adnbyte[1]) & ioaddr_dcdr[3] & I_DEVSEL & !I_OE_WE_DEV;
+//assign CTS_COM1_changed = CTS_COM1[1] ^ CTS_COM1[0];
+//assign DSR_COM1_changed = DSR_COM1[1] ^ DSR_COM1[0];
+//assign RI_COM1_changed = RI_COM1[1] ^ RI_COM1[0];
+//assign DCD_COM1_changed = DCD_COM1[1] ^ DCD_COM1[0];
+
+assign RTS = !MCR_COM1[1];
+assign DTR = !MCR_COM1[0];
+
+always@(posedge I_CLK_BUS or negedge _I_RESET)
+begin
+if(!_I_RESET)
+begin
+O_AD <= 32'h00;
+end
+else
+begin
+case(I_ADDR[2:0])
+3'h0: 
+if(LCR_COM1[7]) 
+O_AD <= {DLL_COM1,DLL_COM1,DLL_COM1,DLL_COM1};
+else
+O_AD <= {RBR_COM1,RBR_COM1,RBR_COM1,RBR_COM1}; 
+3'h0: 
+if(LCR_COM1[7]) 
+O_AD <= {DLM_COM1,DLM_COM1,DLM_COM1,DLM_COM1};
+else
+O_AD <= {IER_COM1,IER_COM1,IER_COM1,IER_COM1};
+3'h2: O_AD <= {IIR_COM1,IIR_COM1,IIR_COM1,IIR_COM1};
+3'h3: O_AD <= {LCR_COM1,LCR_COM1,LCR_COM1,LCR_COM1};
+3'h4: O_AD <= {MCR_COM1,MCR_COM1,MCR_COM1,MCR_COM1};
+3'h5: O_AD <= {LSR_COM1,LSR_COM1,LSR_COM1,LSR_COM1};
+3'h6: O_AD <= {MSR_COM1,MSR_COM1,MSR_COM1,MSR_COM1};
+3'h7: O_AD <= {SCR_COM1,SCR_COM1,SCR_COM1,SCR_COM1};
+default:
+O_AD <= 32'h00;
+endcase
+end
+end
+
+always@*
+begin
+if(!LCR_COM1[7])
+case(I_ADDR[2:0])
+3'h0: ioaddr_dcdr = 10'h02;
+3'h1: ioaddr_dcdr = 10'h08;
+3'h2: ioaddr_dcdr = 10'h10;
+3'h3: ioaddr_dcdr = 10'h20;
+3'h4: ioaddr_dcdr = 10'h40;
+3'h5: ioaddr_dcdr = 10'h80;
+3'h6: ioaddr_dcdr = 10'h100;
+3'h7: ioaddr_dcdr = 10'h200;
+default:
+ioaddr_dcdr = 10'h00;
+endcase
+else
+case(I_ADDR[2:0])
+3'h0: ioaddr_dcdr = 10'h01;
+3'h1: ioaddr_dcdr = 10'h04;
+3'h2: ioaddr_dcdr = 10'h10;
+3'h3: ioaddr_dcdr = 10'h20;
+3'h4: ioaddr_dcdr = 10'h40;
+3'h5: ioaddr_dcdr = 10'h80;
+3'h6: ioaddr_dcdr = 10'h100;
+3'h7: ioaddr_dcdr = 10'h200;
+default:
+ioaddr_dcdr = 10'h00;
+endcase
+end
+
+always@(posedge I_CLK_DEV)
+begin
+O_TX <= (TSR_COM1[11:1] == 12'h0) & strb_tx ? 1'b1 : TSR_COM1[0];
+end
+
+/*always@(posedge I_CLK_DEV or posedge _I_RESET)
+begin
+if(!_I_RESET)
+begin
+rx_cntr <= 0;
+end
+else
+begin
+if(strb_rx & rx_shift_en)
+if(rx_cntr == rx_bcount)
+rx_cntr <= 0;
+else
+rx_cntr <= rx_cntr + 1;
+end
+end*/
+
+always@(posedge I_CLK_DEV or negedge rx_in[0]) ///опорная частота или другая любая большая в 3-4 раза, 
+begin																//кратная 115200 и не менее 230400
+if(!rx_in[0])
+rx_shift_en <= 1;
+else
+if(rx_done & strb_rx | !_I_RESET)
+rx_shift_en <= 0;
+end
+
+always@*
+begin
+case(LCR_COM1[3:0])
+4'b0000: rx_done = !RSR_COM1[4];
+4'b0001: rx_done = !RSR_COM1[3]; 
+4'b0010: rx_done = !RSR_COM1[2];
+4'b0011: rx_done = !RSR_COM1[1];
+4'b0100: rx_done = !RSR_COM1[4];
+4'b0101: rx_done = !RSR_COM1[3]; 
+4'b0110: rx_done = !RSR_COM1[2];
+4'b0111: rx_done = !RSR_COM1[1];
+4'b1000: rx_done = !RSR_COM1[3];
+4'b1001: rx_done = !RSR_COM1[2];
+4'b1010: rx_done = !RSR_COM1[1];
+4'b1011: rx_done = !RSR_COM1[0];
+4'b1100: rx_done = !RSR_COM1[3];
+4'b1101: rx_done = !RSR_COM1[2];
+4'b1110: rx_done = !RSR_COM1[1];
+4'b1111: rx_done = !RSR_COM1[0];      
+endcase
+end
+
+always@*
+begin
+case(FCR_COM1[7:6])
+2'b00: fifo_rx_itrig = 4'h1;
+2'b01: fifo_rx_itrig = 4'h4;
+2'b10: fifo_rx_itrig = 4'h8;
+2'b11: fifo_rx_itrig = 4'hE;
+endcase
+end
+
+////////////////////////////////////////////////////////
+///////////////////BEGIN RSR/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+always@(posedge I_CLK_DEV or negedge _I_RESET)
+begin
+if(!_I_RESET)
+RSR_COM1 <= 11'h7FF;
+else
+if(strb_rx & rx_shift_en)
+begin
+if(rx_done)
+RSR_COM1 <= {rx_in[0],10'h3FF};
+else
+RSR_COM1 <= {rx_in[0],RSR_COM1[10:1]};
+end
+end
+
+
+
+always@(posedge I_CLK_DEV or negedge _I_RESET)
+begin
+if(!_I_RESET)
+begin
+fifo_rx_waddr <= 0;
+end
+else
+begin
+if(rx_done & strb_rx)
+begin
+case(LCR_COM1[3:0])
+4'b0000: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:5];
+4'b0001: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:4]; 
+4'b0010: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:3];
+4'b0011: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:2];
+4'b0100: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:5];
+4'b0101: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:4]; 
+4'b0110: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:3];
+4'b0111: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[9:2];
+4'b1000: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:4];
+4'b1001: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:3];
+4'b1010: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:2];
+4'b1011: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:1];
+4'b1100: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:4];
+4'b1101: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:3];
+4'b1110: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:2];
+4'b1111: FIFO_RX_COM1[fifo_rx_waddr] <= RSR_COM1[8:1];      
+endcase
+fifo_rx_waddr <= fifo_rx_waddr + 1;
+/*case(LCR_COM1[5:0])
+6'b000000: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[6]); parity_error[0] <= 0; end
+6'b000001: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= 0; end
+6'b000010: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= 0; end
+6'b000011: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= 0; end
+6'b000100: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[6]); parity_error[0] <= 0; end
+6'b000101: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= 0; end
+6'b000110: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= 0; end
+6'b000111: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= 0; end
+
+6'b001000: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= !(^RSR_COM1[5:1]) ^ RSR_COM1[6]; end
+6'b001001: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= !(^RSR_COM1[6:1]) ^ RSR_COM1[7]; end
+6'b001010: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= !(^RSR_COM1[7:1]) ^ RSR_COM1[8]; end
+6'b001011: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= !(^RSR_COM1[8:1]) ^ RSR_COM1[9]; end
+6'b001100: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= !(^RSR_COM1[5:1]) ^ RSR_COM1[6]; end
+6'b001101: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= !(^RSR_COM1[6:1]) ^ RSR_COM1[7]; end
+6'b001110: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= !(^RSR_COM1[7:1]) ^ RSR_COM1[8]; end
+6'b001111: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= !(^RSR_COM1[8:1]) ^ RSR_COM1[9]; end
+
+6'b011000: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= (^RSR_COM1[5:1]) ^ RSR_COM1[6]; end
+6'b011001: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= (^RSR_COM1[6:1]) ^ RSR_COM1[7]; end
+6'b011010: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= (^RSR_COM1[7:1]) ^ RSR_COM1[8]; end
+6'b011011: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= (^RSR_COM1[8:1]) ^ RSR_COM1[9]; end
+6'b011100: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= (^RSR_COM1[5:1]) ^ RSR_COM1[6]; end
+6'b011101: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= (^RSR_COM1[6:1]) ^ RSR_COM1[7]; end
+6'b011110: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= (^RSR_COM1[7:1]) ^ RSR_COM1[8]; end
+6'b011111: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= (^RSR_COM1[8:1]) ^ RSR_COM1[9]; end
+
+6'b101000: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= !RSR_COM1[6]; end
+6'b101001: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= !RSR_COM1[7]; end
+6'b101010: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= !RSR_COM1[8]; end
+6'b101011: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= !RSR_COM1[9]; end
+6'b101100: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= !RSR_COM1[6]; end
+6'b101101: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= !RSR_COM1[7]; end
+6'b101110: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= !RSR_COM1[8]; end
+6'b101111: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= !RSR_COM1[9]; end
+
+6'b111000: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= RSR_COM1[6]; end
+6'b111001: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= RSR_COM1[7]; end
+6'b111010: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= RSR_COM1[8]; end
+6'b111011: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= RSR_COM1[9]; end
+6'b111100: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[7]); parity_error[0] <= RSR_COM1[6]; end
+6'b111101: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[8]); parity_error[0] <= RSR_COM1[7]; end
+6'b111110: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= RSR_COM1[8]; end
+6'b111111: begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[10]); parity_error[0] <= RSR_COM1[9]; end
+default:
+begin framing_error[0] <= !(!RSR_COM1[0] & RSR_COM1[9]); parity_error[0] <= 0; end
+endcase*/
+end
+end
+end
+
+////////////////////////////////////////////////////////
+///////////////////END RSR/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+always@(posedge I_CLK_BUS or negedge _I_RESET)
+begin
+if(!_I_RESET)
+RBR_COM1 <= 8'hFF;
+else
+RBR_COM1 <= FIFO_RX_COM1[fifo_rx_raddr];
+end
+
+always@(posedge I_CLK_BUS or negedge _I_RESET)
+begin
+if(!_I_RESET)
+THR_COM1 <= 0;
+else
+THR_COM1 <= FIFO_TX_COM1[fifo_tx_raddr];
+end
+
+////////////////////////////////////////////////////////
+///////////////////BEGIN CLOCKS/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+always@(posedge I_CLK_DEV or negedge _I_RESET/*posedge ioaddr_dcdr[1] & I_DEVSEL & !I_OE_WE_DEV*/)
+begin
+//if(ioaddr_dcdr[1] & I_DEVSEL & !I_OE_WE_DEV)
+if(!_I_RESET)
+strb_tx <= 0;
+else
+strb_tx <= strb_cntr_tx == {DLM_COM1,DLL_COM1,6'h00};
+end
+
+always@(posedge I_CLK_DEV or negedge _I_RESET)
+begin
+if(!_I_RESET)
+strb_rx <= 0;
+else
+strb_rx <= strb_cntr_rx == {DLM_COM1,DLL_COM1,5'h00};
+end
+
+always@(posedge I_CLK_DEV /*or negedge _I_RESET*//*or posedge ioaddr_dcdr[1] & I_DEVSEL & !I_OE_WE_DEV*/)
+begin
+//if(ioaddr_dcdr[1] & I_DEVSEL & !I_OE_WE_DEV)
+//strb_cntr_tx <= 16'b1;
+//else
+//if(!_I_RESET)
+//strb_cntr_tx <= 22'b1;
+//else
+if(strb_cntr_tx == {DLM_COM1,DLL_COM1,6'h00} | TSR_COM1[11:1] == 12'h0 | !_I_RESET)
+strb_cntr_tx <= 22'b1;
+else
+strb_cntr_tx <= strb_cntr_tx + 1;
+end
+
+always@(posedge I_CLK_DEV /*or negedge _I_RESET*//*or posedge rx_edge*/)
+begin
+//if(!_I_RESET)
+//strb_cntr_rx <= 22'b1;
+//else
+if(strb_cntr_rx == {DLM_COM1,DLL_COM1,6'h00} | !rx_shift_en | rx_edge | !_I_RESET)
+strb_cntr_rx <= 22'b1;
+else
+strb_cntr_rx <= strb_cntr_rx + 1;
+end
+
+////////////////////////////////////////////////////////
+///////////////////END CLOCKS/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////
+///////////////////BEGIN TSR/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+//Это место надо будет посмотреть при моделировании !!!!!!!
+//данные не успевают загрузиться в THR и попадают в TSR
+//А также, TSR может загрузиться в любой момент, так как FIFO_TX_COM1_empty 
+//и сдвиговый регистр TSR тактируются от разных тактовых частот, которые не совпадают по фазе и не кратны
+
+always@(posedge I_CLK_DEV or negedge _I_RESET)
+begin
+if(!_I_RESET)
+begin
+TSR_COM1 <= 0;
+fifo_tx_raddr <= 0;
+end
+else
+begin
+if(!fifo_tx_empty & (TSR_COM1[11:1] == 12'h0))
+begin 
+fifo_tx_raddr <= fifo_tx_raddr + 1;
+case(LCR_COM1[5:0])
+6'b000000: TSR_COM1 <= {6'b000001,THR_COM1[4:0],1'b0};
+6'b000001: TSR_COM1 <= {5'b00001,THR_COM1[5:0],1'b0};
+6'b000010: TSR_COM1 <= {4'b0001,THR_COM1[6:0],1'b0};
+6'b000011: TSR_COM1 <= {3'b001,THR_COM1[7:0],1'b0};
+6'b000100: TSR_COM1 <= {6'b000011,THR_COM1[4:0],1'b0};
+6'b000101: TSR_COM1 <= {5'b00011,THR_COM1[5:0],1'b0}; 
+6'b000110: TSR_COM1 <= {4'b0011,THR_COM1[6:0],1'b0};
+6'b000111: TSR_COM1 <= {3'b011,THR_COM1[7:0],1'b0}; 
+
+6'b001000: TSR_COM1 <= {5'b00001,!(^THR_COM1[4:0]),THR_COM1[4:0],1'b0}; 
+6'b001001: TSR_COM1 <= {4'b0001,!(^THR_COM1[5:0]),THR_COM1[5:0],1'b0}; 
+6'b001010: TSR_COM1 <= {3'b001,!(^THR_COM1[6:0]),THR_COM1[6:0],1'b0}; 
+6'b001011: TSR_COM1 <= {2'b01,!(^THR_COM1[7:0]),THR_COM1[7:0],1'b0}; 
+6'b001100: TSR_COM1 <= {5'b00011,!(^THR_COM1[4:0]),THR_COM1[4:0],1'b0}; 
+6'b001101: TSR_COM1 <= {4'b0011,!(^THR_COM1[5:0]),THR_COM1[5:0],1'b0}; 
+6'b001110: TSR_COM1 <= {3'b011,!(^THR_COM1[6:0]),THR_COM1[6:0],1'b0}; 
+6'b001111: TSR_COM1 <= {2'b11,!(^THR_COM1[7:0]),THR_COM1[7:0],1'b0}; 
+
+6'b011000: TSR_COM1 <= {5'b00001,^THR_COM1[4:0],THR_COM1[4:0],1'b0}; 
+6'b011001: TSR_COM1 <= {4'b0001,^THR_COM1[5:0],THR_COM1[5:0],1'b0}; 
+6'b011010: TSR_COM1 <= {3'b001,^THR_COM1[6:0],THR_COM1[6:0],1'b0}; 
+6'b011011: TSR_COM1 <= {2'b01,^THR_COM1[7:0],THR_COM1[7:0],1'b0}; 
+6'b011100: TSR_COM1 <= {5'b00011,^THR_COM1[4:0],THR_COM1[4:0],1'b0}; 
+6'b011101: TSR_COM1 <= {4'b0011,^THR_COM1[5:0],THR_COM1[5:0],1'b0}; 
+6'b011110: TSR_COM1 <= {3'b011,^THR_COM1[6:0],THR_COM1[6:0],1'b0}; 
+6'b011111: TSR_COM1 <= {2'b11,^THR_COM1[7:0],THR_COM1[7:0],1'b0}; 
+
+6'b101000: TSR_COM1 <= {5'b00001,1'b1,THR_COM1[4:0],1'b0}; 
+6'b101001: TSR_COM1 <= {4'b0001,1'b1,THR_COM1[5:0],1'b0}; 
+6'b101010: TSR_COM1 <= {3'b001,1'b1,THR_COM1[6:0],1'b0}; 
+6'b101011: TSR_COM1 <= {2'b01,1'b1,THR_COM1[7:0],1'b0}; 
+6'b101100: TSR_COM1 <= {5'b00011,1'b1,THR_COM1[4:0],1'b0}; 
+6'b101101: TSR_COM1 <= {4'b0011,1'b1,THR_COM1[5:0],1'b0}; 
+6'b101110: TSR_COM1 <= {3'b011,1'b1,THR_COM1[6:0],1'b0}; 
+6'b101111: TSR_COM1 <= {2'b11,1'b1,THR_COM1[7:0],1'b0}; 
+
+6'b111000: TSR_COM1 <= {5'b00001,1'b0,THR_COM1[4:0],1'b0}; 
+6'b111001: TSR_COM1 <= {4'b0001,1'b0,THR_COM1[5:0],1'b0}; 
+6'b111010: TSR_COM1 <= {3'b001,1'b0,THR_COM1[6:0],1'b0}; 
+6'b111011: TSR_COM1 <= {2'b01,1'b0,THR_COM1[7:0],1'b0}; 
+6'b111100: TSR_COM1 <= {5'b00011,1'b0,THR_COM1[4:0],1'b0}; 
+6'b111101: TSR_COM1 <= {4'b0011,1'b0,THR_COM1[5:0],1'b0}; 
+6'b111110: TSR_COM1 <= {3'b011,1'b0,THR_COM1[6:0],1'b0}; 
+6'b111111: TSR_COM1 <= {2'b11,1'b0,THR_COM1[7:0],1'b0}; 
+default:
+TSR_COM1 <= {3'b001,THR_COM1[7:0],1'b0};
+endcase
+end
+else
+begin
+if(strb_tx)
+TSR_COM1 <= {1'b0,TSR_COM1[11:1]};
+end
+end
+end
+
+////////////////////////////////////////////////////////
+///////////////////END TSR/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////
+///////////////////BEGIN INTERRUPTS/////////////////////////////////
+/////////////////////////////////////////////////////////
+//assign int_tx_cond = ier_1_iflag | fifo_tx_empty_iflag;
+
+//assign int_cond = (int_cond & IER_COM1[1]) | (int_rx_cond & IER_COM1[0]) | (int_modem_cond & IER_COM1[3]) 
+//| (int_line_cond & IER_COM1[2]);
+
+//assign int_line_cond = par_err_iflag | frame_err_iflag;
+
+//assign int_rx_cond = fifo_rx_timeout_iflag | fifo_rx_int_trig_iflag;
+
+//assign int_modem_cond = CTS_COM1_changed_int_flag | DSR_COM1_changed_int_flag |
+//RI_COM1_changed_int_flag | DCD_COM1_changed_int_flag;
+
+assign is_dev_init = MCR_COM1[3];
+
+assign O_INTX = !(is_dev_init & (((par_err_iflag | frame_err_iflag) & IER_COM1[2]) | (fifo_rx_timeout_iflag & IER_COM1[0]) | 
+(fifo_rx_int_trig_iflag & IER_COM1[0]) | 
+((ier_1_iflag | fifo_tx_empty_iflag) & IER_COM1[1]) | ((CTS_COM1_changed_int_flag 
+| DSR_COM1_changed_int_flag | RI_COM1_changed_int_flag |
+DCD_COM1_changed_int_flag)) & IER_COM1[3]));
+
+/*always@(posedge I_CLK_DEV or posedge (com_state == COMF_LSR_READ & is_COM_iospace))
+begin
+if(com_state == COMF_LSR_READ & is_COM_iospace)
+begin
+parity_error_int_flag <= 0;
+framing_error_int_flag <= 0;
+end
+else
+begin
+if(parity_error_rising_edge)
+begin
+parity_error_int_flag <= 1;
+end 
+if(framing_error_rising_edge)
+begin
+framing_error_int_flag <= 1; 
+end
+end
+end*/
+
+always@(posedge I_CLK_DEV or posedge ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV)
+begin
+if(ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV)
+begin
+rx_timeout_cntr <= 0;
+end
+else
+begin
+if(!fifo_rx_empty & !rx_shift_en & fifo_rx_itrig_cntr != fifo_rx_itrig)
+rx_timeout_cntr <= rx_timeout_cntr + 1;
+else
+rx_timeout_cntr <= 0;
+end
+end
+
+always@(posedge I_CLK_DEV or posedge ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV)
+begin
+if(ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV)
+begin
+fifo_rx_timeout_iflag <= 0;
+end
+else
+begin
+if(rx_timeout_cntr == {DLM_COM1,DLL_COM1,11'h400})
+fifo_rx_timeout_iflag <= 1;  ///ИЗ-ЗА ЭТОГО БОЛЬШЕ ЛЭ ЗАНИМАЕТ !!!
+end
+end
+
+always@(posedge I_CLK_DEV or posedge ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV) ///опорная частота или другая любая большая кратная 115200 для триггера
+begin                             //так как RSR_COM1_counter от этой частоты работает, поэтому не менять !
+if(ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV)
+fifo_rx_itrig_cntr <= 0;
+else
+if(rx_done & strb_rx)
+fifo_rx_itrig_cntr <= fifo_rx_itrig_cntr + 1;
+end
+
+always@(posedge I_CLK_DEV or posedge ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV) 
+begin   ///опорная частота или другая любая большая кратная 115200 для триггера
+if(ioaddr_dcdr[1] & I_DEVSEL & I_OE_WE_DEV)
+fifo_rx_int_trig_iflag <= 0;
+else
+begin
+if(fifo_rx_itrig_cntr == fifo_rx_itrig)
+fifo_rx_int_trig_iflag <= 1; 
+end
+end
+
+/*always@(posedge baudclk_96000kHz or posedge (com_state == COMF_MSR_READ & is_COM_iospace))
+begin
+if(com_state == COMF_MSR_READ & is_COM_iospace)
+begin
+CTS_COM1_changed_int_flag <= 0;
+DSR_COM1_changed_int_flag <= 0;
+RI_COM1_changed_int_flag <= 0;
+DCD_COM1_changed_int_flag <= 0;
+MSR_COM1[3:0] <= 0;
+end
+else
+begin
+MSR_COM1[4] <= !CTS;
+MSR_COM1[5] <= !DSR;
+MSR_COM1[6] <= !RI;
+MSR_COM1[7] <= !DCD;
+if(CTS_COM1_changed & IER_COM1[3])
+begin
+MSR_COM1[0] <= 1;
+//if(!interrupt_pending)
+CTS_COM1_changed_int_flag <= 1; 
+end
+if(DSR_COM1_changed & IER_COM1[3])
+begin
+MSR_COM1[1] <= 1;
+//if(!interrupt_pending)
+DSR_COM1_changed_int_flag <= 1;
+end 
+if(RI_COM1_changed & IER_COM1[3])
+begin
+MSR_COM1[2] <= 1;
+//if(!interrupt_pending)
+RI_COM1_changed_int_flag <= 1; 
+end
+if(DCD_COM1_changed & IER_COM1[3])
+begin
+MSR_COM1[3] <= 1;
+//if(!interrupt_pending)
+DCD_COM1_changed_int_flag <= 1; 
+end
+end
+end*/
+
+always@(posedge fifo_tx_empty or posedge (ioaddr_dcdr[3] | ioaddr_dcdr[4]) & I_DEVSEL & I_OE_WE_DEV)
+begin
+if((ioaddr_dcdr[3] | ioaddr_dcdr[4]) & I_DEVSEL & I_OE_WE_DEV)
+fifo_tx_empty_iflag <= 0;//irdy - чтобы IIR не изменялся по ходу его чтения, то есть сброс прерывания
+else										//после чтения IIR
+begin
+//if(fifo_tx_empty)
+fifo_tx_empty_iflag <= 1;
+end
+end
+
+always@(posedge IER_COM1[1] or posedge (ioaddr_dcdr[3] | ioaddr_dcdr[4]) & I_DEVSEL & I_OE_WE_DEV)
+begin
+if((ioaddr_dcdr[3] | ioaddr_dcdr[4]) & I_DEVSEL & I_OE_WE_DEV)
+ier_1_iflag <= 0; //irdy - чтобы IIR не изменялся по ходу его чтения, то есть сброс прерывания
+else												//после чтения IIR
+begin
+//if(ier_1_posedge)
+ier_1_iflag <= 1;
+end
+end
+
+/*always@(posedge ioaddr_dcdr[4] & I_DEVSEL & I_OE_WE_DEV or posedge int_cond)
+begin
+if(int_cond)
+int_running <= 1;
+else
+int_running <= 0;
+end*/
+////////////////////////////////////////////////////////
+///////////////////END INTERRUPTS/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+always@(posedge I_CLK_BUS)
+begin
+if(ioaddr_dcdr[1] & I_DEVSEL & !I_OE_WE_DEV)
+FIFO_TX_COM1[fifo_tx_waddr] <= adnbyte;
+end
+
+////////////////////////////////////////////////////////
+///////////////////BEGIN COM1 REGISTERS/////////////////////////////////
+/////////////////////////////////////////////////////////
+assign COM1_RESET = (_I_RESET | !IER_COM1[7]);
+
+always@(posedge I_CLK_BUS or negedge _I_RESET)
+begin
+if(!_I_RESET)
+begin
+IIR_COM1 <= 8'h01;
+end
+else
+begin
+IIR_COM1[6] <= FCR_COM1[0];
+IIR_COM1[7] <= FCR_COM1[0];
+if((par_err_iflag | frame_err_iflag) & IER_COM1[2])
+begin
+IIR_COM1[3:0] <= 4'h6;
+end
+else if(fifo_rx_timeout_iflag & IER_COM1[0])
+begin
+IIR_COM1[3:0] <= 4'hC;
+end
+else if(fifo_rx_int_trig_iflag & IER_COM1[0])
+begin
+IIR_COM1[3:0] <= 4'h4;
+end
+else if((ier_1_iflag | fifo_tx_empty_iflag) & IER_COM1[1])
+begin
+IIR_COM1[3:0] <= 4'h2;
+end
+else if((CTS_COM1_changed_int_flag |
+DSR_COM1_changed_int_flag |
+RI_COM1_changed_int_flag |
+DCD_COM1_changed_int_flag) & IER_COM1[3])
+begin
+IIR_COM1[3:0] <=  4'h0;
+end
+else
+begin
+IIR_COM1[3:0] <=  4'h1;
+end
+end
+end
+
+always@(posedge I_CLK_BUS or negedge _I_RESET/*COM1_RESET*/)
+begin
+if(!_I_RESET/*COM1_RESET*/)
+begin
+IER_COM1 <= 8'h00;
+LCR_COM1 <= 8'h00;
+MCR_COM1 <= 8'h00;
+LSR_COM1 <= 8'h60;
+SCR_COM1 <= 8'h00;
+DLL_COM1 <= 8'h60;
+DLM_COM1 <= 8'h80;
+FCR_COM1 <= 8'hC1;
+fifo_tx_waddr <= 0;
+fifo_rx_raddr <= 0;
+end
+else
+begin
+if(ioaddr_dcdr[0] & I_DEVSEL & !I_OE_WE_DEV)
+DLL_COM1 <= adnbyte;
+if(ioaddr_dcdr[2] & I_DEVSEL & !I_OE_WE_DEV)
+DLM_COM1 <= adnbyte;
+if(ioaddr_dcdr[3] & I_DEVSEL & !I_OE_WE_DEV)
+IER_COM1 <= adnbyte;
+if(ioaddr_dcdr[5]  & I_DEVSEL & !I_OE_WE_DEV)
+LCR_COM1 <= adnbyte;
+if(ioaddr_dcdr[6]  & I_DEVSEL & !I_OE_WE_DEV)
+MCR_COM1 <= adnbyte;
+if(ioaddr_dcdr[7]  & I_DEVSEL & !I_OE_WE_DEV)
+LSR_COM1 <= adnbyte;
+if(ioaddr_dcdr[9] & I_DEVSEL & !I_OE_WE_DEV)
+SCR_COM1 <= adnbyte;
+//if(ioaddr_dcdr[4] & I_DEVSEL & !I_OE_WE_DEV) //оставить - можно будет убирать режим FIFO
+//FCR_COM1 <= adnbyte;
+
+if(ioaddr_dcdr[1] & I_DEVDATA & !I_OE_WE_DEV)
+fifo_tx_waddr <= fifo_tx_waddr + 1;
+if(ioaddr_dcdr[1] & I_DEVDATA & I_OE_WE_DEV & !fifo_rx_empty)
+fifo_rx_raddr <= fifo_rx_raddr + 1;
+
+LSR_COM1[0] <= !fifo_tx_empty;
+LSR_COM1[1] <= 0;
+LSR_COM1[2] <= par_err[0];
+LSR_COM1[3] <= frame_err[0];
+LSR_COM1[4] <= 0;
+LSR_COM1[5] <= fifo_tx_empty; 
+LSR_COM1[6] <= fifo_tx_empty & (TSR_COM1[11:1] == 12'h0); 
+LSR_COM1[7] <= !fifo_tx_empty & (par_err[0] | frame_err[0]);
+
+if(FCR_COM1[2])
+begin
+fifo_tx_waddr <= fifo_tx_raddr;
+fifo_rx_raddr <= fifo_rx_waddr;
+end
+
+end
+end
+
+
+////////////////////////////////////////////////////////
+///////////////////END COM1 REGISTERS/////////////////////////////////
+/////////////////////////////////////////////////////////
+
+
+endmodule 

@@ -1,0 +1,108 @@
+Archive Project report for pciusbtest
+Sat Jun 23 19:01:25 2018
+Quartus II 32-bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Archive Project Summary
+  3. Archive Project Messages
+  4. Files Archived
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------+
+; Archive Project Summary                                        ;
++------------------------+---------------------------------------+
+; Archive Project Status ; Successful - Sat Jun 23 19:01:25 2018 ;
+; Revision Name          ; pciusbtest                            ;
+; Top-level Entity Name  ; Block1                                ;
+; Family                 ; Cyclone III                           ;
++------------------------+---------------------------------------+
+
+
++--------------------------+
+; Archive Project Messages ;
++--------------------------+
+Info: File Set 'Source control' contains:
+    Info: Project source and settings files
+    Info: Automatically detected source files
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated archive 'C:/altera_projects/pci_usb_test/pciusbtest.qar'
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated report 'pciusbtest.archive.rpt'
+Info (23030): Evaluation of Tcl script c:/altera/13.0/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 32-bit Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 256 megabytes
+    Info: Processing ended: Sat Jun 23 19:01:25 2018
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:15
+
+
++--------------------------------------------------------+
+; Files Archived                                         ;
++--------------------------------------------------------+
+; File Name                                              ;
++--------------------------------------------------------+
+; altpll0.bsf                                            ;
+; altpll0.ppf                                            ;
+; altpll0.qip                                            ;
+; altpll0.v                                              ;
+; altpll0_bb.v                                           ;
+; Block1.v                                               ;
+; C:/altera_projects/pci_usb_test/stp1_auto_stripped.stp ;
+; com_controller.v                                       ;
+; incremental_db/compiled_partitions/pciusbtest.db_info  ;
+; lpm_counter0.bsf                                       ;
+; lpm_counter0.qip                                       ;
+; lpm_counter0.v                                         ;
+; lpm_counter0_bb.v                                      ;
+; lpt_controller.v                                       ;
+; output_files/Chain1.cdf                                ;
+; output_files/Chain2.cdf                                ;
+; output_files/Chain3.cdf                                ;
+; output_files/Chain5.cdf                                ;
+; output_files/Chain6.cdf                                ;
+; output_files/Chain7.cdf                                ;
+; output_files/stp1.stp                                  ;
+; output_files/stp2.stp                                  ;
+; pci_constraints_for_pci_sample.tcl                     ;
+; pci_controller.v                                       ;
+; pci_io.v                                               ;
+; PCIMUX.bsf                                             ;
+; pcimux.qip                                             ;
+; PCIMUX.v                                               ;
+; PCIMUX_bb.v                                            ;
+; pciusbtest.out.sdc                                     ;
+; pciusbtest.qpf                                         ;
+; pciusbtest.qsf                                         ;
+; pciusbtest.sdc                                         ;
+; pciusbtest_assignment_defaults.qdf                     ;
+; simulation/modelsim/Block1.vt                          ;
+; stp1.stp                                               ;
++--------------------------------------------------------+
+
+

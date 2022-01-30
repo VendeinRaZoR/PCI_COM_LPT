@@ -1,0 +1,104 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "09/28/2018 20:23:36"
+                                                                                
+// Verilog Test Bench template for design : pci_com_lpt_usb_eth
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ps/ 1 ps
+module pci_com_lpt_usb_eth_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg _I_FRAME;
+reg _I_IRDY;
+reg _I_RESET;
+reg [3:0] I_CBE;
+reg I_CLK;
+reg I_CLK_DEV;
+reg I_CTS;
+reg I_DCD;
+reg I_DSR;
+reg I_IDSEL;
+reg I_RI;
+reg I_RX;
+reg [31:0] treg_IO_AD;
+// wires                                               
+wire _O_DEVSEL;
+wire _O_TRDY;
+wire [31:0]  IO_AD;
+wire O_DEV0BAR4SEL;
+wire O_DEV1BAR0SEL;
+wire O_DEV1BAR1SEL;
+wire O_DTR;
+wire O_INTX;
+wire O_RTS;
+wire O_TX;
+
+// assign statements (if any)                          
+assign IO_AD = treg_IO_AD;
+pci_com_lpt_usb_eth i1 (
+// port map - connection between master ports and signals/registers   
+	._I_FRAME(_I_FRAME),
+	._I_IRDY(_I_IRDY),
+	._I_RESET(_I_RESET),
+	._O_DEVSEL(_O_DEVSEL),
+	._O_TRDY(_O_TRDY),
+	.I_CBE(I_CBE),
+	.I_CLK(I_CLK),
+	.I_CLK_DEV(I_CLK_DEV),
+	.I_CTS(I_CTS),
+	.I_DCD(I_DCD),
+	.I_DSR(I_DSR),
+	.I_IDSEL(I_IDSEL),
+	.I_RI(I_RI),
+	.I_RX(I_RX),
+	.IO_AD(IO_AD),
+	.O_DEV0BAR4SEL(O_DEV0BAR4SEL),
+	.O_DEV1BAR0SEL(O_DEV1BAR0SEL),
+	.O_DEV1BAR1SEL(O_DEV1BAR1SEL),
+	.O_DTR(O_DTR),
+	.O_INTX(O_INTX),
+	.O_RTS(O_RTS),
+	.O_TX(O_TX)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+                                                       
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+                                                       
+@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule
+

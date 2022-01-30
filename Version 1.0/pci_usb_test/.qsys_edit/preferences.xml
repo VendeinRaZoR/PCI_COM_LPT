@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable>
+  <columns>
+   <connections preferredWidth="47" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="185" />
+   <clocksource preferredWidth="184" />
+   <frequency preferredWidth="170" />
+  </columns>
+ </clocktable>
+ <library
+   expandedCategories="Library/Peripherals,Library/Interface Protocols/PCI,Library/Interface Protocols/Ethernet/Submodules,Library/Interface Protocols,Project,Library/Interface Protocols/Ethernet,Library/Interface Protocols/Ethernet/Example Designs,Library/Interface Protocols/Ethernet/Example,Library/Interface Protocols/DisplayPort,Library/Interface Protocols/Transceiver PHY,Library" />
+ <window width="1024" height="570" x="0" y="0" />
+</preferences>

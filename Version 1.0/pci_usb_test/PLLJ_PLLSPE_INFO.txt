@@ -1,0 +1,5 @@
+PLL_Name	altpll0:b2v_inst3|altpll:altpll_component|altpll0_altpll3:auto_generated|pll1
+PLLJITTER	36
+PLLSPEmax	84
+PLLSPEmin	-53
+

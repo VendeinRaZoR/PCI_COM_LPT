@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera_projects\pci_usb_test\simulation\modelsim
+vBlock1
+!i10b 1
+!s100 YCH:FDPS:CIVgZ0Qk^CDK3
+I7zMAWe^aK9KCBF_LEMJea1
+VEE_CMN93P9[]ae0Z8FDJ]0
+Z1 dC:\altera_projects\pci_usb_test\simulation\modelsim
+w1531064915
+8C:/altera_projects/pci_usb_test/Block1.v
+FC:/altera_projects/pci_usb_test/Block1.v
+L0 19
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1531189173.557000
+!s107 C:/altera_projects/pci_usb_test/Block1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera_projects/pci_usb_test|C:/altera_projects/pci_usb_test/Block1.v|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+C:/altera_projects/pci_usb_test -O0
+n@block1

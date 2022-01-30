@@ -1,0 +1,351 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.2"))
+(symbol
+	(rect 64 64 392 336)
+	(text "COM_controller_16C550" (rect 5 0 124 12)(font "Arial" ))
+	(text "inst" (rect 8 256 25 268)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "irdy" (rect 0 0 18 12)(font "Arial" ))
+		(text "irdy" (rect 21 43 39 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "reset" (rect 0 0 24 12)(font "Arial" ))
+		(text "reset" (rect 21 59 45 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "baudclk_221184kHz" (rect 0 0 97 12)(font "Arial" ))
+		(text "baudclk_221184kHz" (rect 21 75 118 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "RX1" (rect 0 0 20 12)(font "Arial" ))
+		(text "RX1" (rect 21 91 41 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "CTS" (rect 0 0 21 12)(font "Arial" ))
+		(text "CTS" (rect 21 107 42 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "DSR" (rect 0 0 23 12)(font "Arial" ))
+		(text "DSR" (rect 21 123 44 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "RI" (rect 0 0 11 12)(font "Arial" ))
+		(text "RI" (rect 21 139 32 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "DCD" (rect 0 0 24 12)(font "Arial" ))
+		(text "DCD" (rect 21 155 45 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "in_addr_bar_offset_w_io[7..0]" (rect 0 0 146 12)(font "Arial" ))
+		(text "in_addr_bar_offset_w_io[7..0]" (rect 21 171 167 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 3))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "is_COM_configured" (rect 0 0 96 12)(font "Arial" ))
+		(text "is_COM_configured" (rect 21 187 117 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "is_COM_iospace" (rect 0 0 82 12)(font "Arial" ))
+		(text "is_COM_iospace" (rect 21 203 103 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208))
+	)
+	(port
+		(pt 0 224)
+		(input)
+		(text "addr_data_buf_in_byte[7..0]" (rect 0 0 139 12)(font "Arial" ))
+		(text "addr_data_buf_in_byte[7..0]" (rect 21 219 160 231)(font "Arial" ))
+		(line (pt 0 224)(pt 16 224)(line_width 3))
+	)
+	(port
+		(pt 0 240)
+		(input)
+		(text "in_command[3..0]" (rect 0 0 88 12)(font "Arial" ))
+		(text "in_command[3..0]" (rect 21 235 109 247)(font "Arial" ))
+		(line (pt 0 240)(pt 16 240)(line_width 3))
+	)
+	(port
+		(pt 328 32)
+		(output)
+		(text "devsel" (rect 16 0 49 12)(font "Arial" ))
+		(text "devsel" (rect 280 27 307 39)(font "Arial" ))
+		(line (pt 328 32)(pt 312 32))
+	)
+	(port
+		(pt 328 48)
+		(output)
+		(text "trdy" (rect 16 0 36 12)(font "Arial" ))
+		(text "trdy" (rect 291 43 307 55)(font "Arial" ))
+		(line (pt 328 48)(pt 312 48))
+	)
+	(port
+		(pt 328 64)
+		(output)
+		(text "par" (rect 16 0 31 12)(font "Arial" ))
+		(text "par" (rect 295 59 307 71)(font "Arial" ))
+		(line (pt 328 64)(pt 312 64))
+	)
+	(port
+		(pt 328 80)
+		(output)
+		(text "interrupt_pin" (rect 16 0 76 12)(font "Arial" ))
+		(text "interrupt_pin" (rect 257 75 307 87)(font "Arial" ))
+		(line (pt 328 80)(pt 312 80))
+	)
+	(port
+		(pt 328 96)
+		(output)
+		(text "TX1" (rect 16 0 33 12)(font "Arial" ))
+		(text "TX1" (rect 293 91 307 103)(font "Arial" ))
+		(line (pt 328 96)(pt 312 96))
+	)
+	(port
+		(pt 328 112)
+		(output)
+		(text "RTS" (rect 16 0 37 12)(font "Arial" ))
+		(text "RTS" (rect 290 107 307 119)(font "Arial" ))
+		(line (pt 328 112)(pt 312 112))
+	)
+	(port
+		(pt 328 128)
+		(output)
+		(text "DTR" (rect 16 0 38 12)(font "Arial" ))
+		(text "DTR" (rect 289 123 307 135)(font "Arial" ))
+		(line (pt 328 128)(pt 312 128))
+	)
+	(port
+		(pt 328 144)
+		(output)
+		(text "control" (rect 16 0 49 12)(font "Arial" ))
+		(text "control" (rect 280 139 307 151)(font "Arial" ))
+		(line (pt 328 144)(pt 312 144))
+	)
+	(port
+		(pt 328 160)
+		(output)
+		(text "out_add_data_io[31..0]" (rect 16 0 128 12)(font "Arial" ))
+		(text "out_add_data_io[31..0]" (rect 213 155 307 167)(font "Arial" ))
+		(line (pt 328 160)(pt 312 160)(line_width 3))
+	)
+	(parameter
+		"TRDY_DELAY"
+		"0"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_RESET"
+		"0"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_IDLE"
+		"1"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_READ"
+		"2"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_RX_READ"
+		"3"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_TX_WRITE"
+		"4"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_IER_WRITE"
+		"5"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_IIR_WRITE"
+		"6"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_FCR_WRITE"
+		"7"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_LCR_WRITE"
+		"8"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_MCR_WRITE"
+		"9"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_LSR_WRITE"
+		"10"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_MSR_WRITE"
+		"11"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_SCR_WRITE"
+		"12"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_DLL_WRITE"
+		"13"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_DLM_WRITE"
+		"14"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_DLL_READ"
+		"15"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_DLM_READ"
+		"16"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_IIR_READ"
+		"17"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_MCR_READ"
+		"18"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_LCR_READ"
+		"19"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_LSR_READ"
+		"20"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_MSR_READ"
+		"21"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_IER_READ"
+		"22"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_TX_INT_FLAG_RESET"
+		"23"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_FIFO_WRITE"
+		"24"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_IER_CHECK"
+		"25"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_TSR_ENABLE"
+		"26"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_FIFO_READ"
+		"27"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_RX_INT_FLAG_RESET"
+		"28"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_MODEM_INT_FLAG_RESET"
+		"29"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"COMF_LINE_INT_FLAG_RESET"
+		"30"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 296 256))
+	)
+	(annotation_block (parameter)(rect 328 -448 632 16))
+)

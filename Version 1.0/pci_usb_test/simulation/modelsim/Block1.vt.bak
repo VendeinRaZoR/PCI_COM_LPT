@@ -1,0 +1,138 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "05/23/2018 02:10:23"
+                                                                                
+// Verilog Test Bench template for design : Block1
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 1 ps
+module Block1_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg ACK;
+reg [31:0] treg_ad;
+reg treg_AFD;
+reg BUSY;
+reg [3:0] cbe;
+reg clk;
+reg clock;
+reg CTS;
+reg treg_devsel;
+reg ERR;
+reg frame;
+reg idsel;
+reg treg_INIT;
+reg intb;
+reg intc;
+reg intd;
+reg irdy;
+reg [7:0] treg_LPT_DATA;
+reg treg_par;
+reg PE;
+reg reset;
+reg RX1;
+reg SELT;
+reg treg_SIN;
+reg treg_STROBE;
+reg treg_trdy;
+// wires                                               
+wire [31:0]  ad;
+wire AFD;
+wire devsel;
+wire INIT;
+wire inta;
+wire led2;
+wire [7:0]  LPT_DATA;
+wire par;
+wire RS422_TX-;
+wire RTS;
+wire SIN;
+wire STROBE;
+wire trdy;
+wire TX1;
+
+// assign statements (if any)                          
+assign ad = treg_ad;
+assign AFD = treg_AFD;
+assign devsel = treg_devsel;
+assign INIT = treg_INIT;
+assign LPT_DATA = treg_LPT_DATA;
+assign par = treg_par;
+assign SIN = treg_SIN;
+assign STROBE = treg_STROBE;
+assign trdy = treg_trdy;
+Block1 i1 (
+// port map - connection between master ports and signals/registers   
+	.ACK(ACK),
+	.ad(ad),
+	.AFD(AFD),
+	.BUSY(BUSY),
+	.cbe(cbe),
+	.clk(clk),
+	.clock(clock),
+	.CTS(CTS),
+	.devsel(devsel),
+	.ERR(ERR),
+	.frame(frame),
+	.idsel(idsel),
+	.INIT(INIT),
+	.inta(inta),
+	.intb(intb),
+	.intc(intc),
+	.intd(intd),
+	.irdy(irdy),
+	.led2(led2),
+	.LPT_DATA(LPT_DATA),
+	.par(par),
+	.PE(PE),
+	.reset(reset),
+	.\RS422_TX- (RS422_TX-),
+	.RTS(RTS),
+	.RX1(RX1),
+	.SELT(SELT),
+	.SIN(SIN),
+	.STROBE(STROBE),
+	.trdy(trdy),
+	.TX1(TX1)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+                                                       
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+                                                       
+@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule
+
