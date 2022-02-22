@@ -1,0 +1,140 @@
+// Copyright (C) 1991-2009 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "09/02/2018 23:49:00"
+                                                                                
+// Verilog Test Bench template for design : Block1
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 1 ps
+module Block1_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg ACK;
+reg treg_AFD;
+reg BUSY;
+reg CTS;
+reg ERR;
+reg treg_INIT;
+reg [7:0] treg_LPT_DATA;
+reg PE;
+reg RX1;
+reg SELT;
+reg treg_SIN;
+reg treg_STROBE;
+reg [31:0] treg_ad;
+reg baudclk_221184kHz;
+reg [3:0] cbe;
+reg clk;
+reg treg_devsel;
+reg frame;
+reg idsel;
+reg intb;
+reg intc;
+reg intd;
+reg irdy;
+reg treg_par;
+reg reset;
+reg treg_trdy;
+// wires                                               
+wire AFD;
+wire INIT;
+wire [7:0] LPT_DATA;
+wire RS422_TX_MINUS;
+wire RTS;
+wire SIN;
+wire STROBE;
+wire TX1;
+wire [31:0] ad;
+wire clk_out;
+wire devsel;
+wire inta;
+wire led2;
+wire par;
+wire trdy;
+
+// assign statements (if any)                          
+assign AFD = treg_AFD;
+assign INIT = treg_INIT;
+assign LPT_DATA = treg_LPT_DATA;
+assign SIN = treg_SIN;
+assign STROBE = treg_STROBE;
+assign ad = treg_ad;
+assign devsel = treg_devsel;
+assign par = treg_par;
+assign trdy = treg_trdy;
+Block1 i1 (
+// port map - connection between master ports and signals/registers   
+	.ACK(ACK),
+	.AFD(AFD),
+	.BUSY(BUSY),
+	.CTS(CTS),
+	.ERR(ERR),
+	.INIT(INIT),
+	.LPT_DATA(LPT_DATA),
+	.PE(PE),
+	.RS422_TX_MINUS(RS422_TX_MINUS),
+	.RTS(RTS),
+	.RX1(RX1),
+	.SELT(SELT),
+	.SIN(SIN),
+	.STROBE(STROBE),
+	.TX1(TX1),
+	.ad(ad),
+	.baudclk_221184kHz(baudclk_221184kHz),
+	.cbe(cbe),
+	.clk(clk),
+	.clk_out(clk_out),
+	.devsel(devsel),
+	.frame(frame),
+	.idsel(idsel),
+	.inta(inta),
+	.intb(intb),
+	.intc(intc),
+	.intd(intd),
+	.irdy(irdy),
+	.led2(led2),
+	.par(par),
+	.reset(reset),
+	.trdy(trdy)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+                                                       
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+                                                       
+@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule
+

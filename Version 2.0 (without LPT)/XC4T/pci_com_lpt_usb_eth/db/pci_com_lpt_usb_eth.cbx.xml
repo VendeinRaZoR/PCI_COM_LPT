@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="pci_com_lpt_usb_eth">
+		<CBX_INST_ENTRY INSTANCE_NAME="|pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add1" CBX_FILE_NAME="add_sub_6sh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|pci_com_lpt_usb_eth|com_controller:b2v_inst|lpm_add_sub:Add2" CBX_FILE_NAME="add_sub_6sh.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

@@ -1,0 +1,86 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 31.000 ns
+From           : IO_AD[23]
+To             : pci_controller:b2v_inst1|ST.ST_IDLE
+From Clock     : --
+To Clock       : I_CLK
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 28.900 ns
+From           : com_controller:b2v_inst|fifo_tx_empty_iflag
+To             : O_INT
+From Clock     : I_CLK
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -3.600 ns
+From           : I_CBE[3]
+To             : pci_controller:b2v_inst1|cmd[3]
+From Clock     : --
+To Clock       : I_CLK
+Failed Paths   : 0
+
+Type           : Clock Setup: 'I_CLK'
+Slack          : 0.203 ns
+Required Time  : 33.00 MHz ( period = 30.303 ns )
+Actual Time    : 33.22 MHz ( period = 30.100 ns )
+From           : pci_controller:b2v_inst1|ST.ST_READCS
+To             : pci_controller:b2v_inst1|ST.ST_IDLE
+From Clock     : I_CLK
+To Clock       : I_CLK
+Failed Paths   : 0
+
+Type           : Clock Setup: 'I_CLK_DEV'
+Slack          : 2.233 ns
+Required Time  : 48.00 MHz ( period = 20.833 ns )
+Actual Time    : 53.76 MHz ( period = 18.600 ns )
+From           : com_controller:b2v_inst|RSR_COM1[4]
+To             : com_controller:b2v_inst|FIFO_RX_COM1~60
+From Clock     : I_CLK_DEV
+To Clock       : I_CLK_DEV
+Failed Paths   : 0
+
+Type           : Clock Hold: 'I_CLK_DEV'
+Slack          : 0.200 ns
+Required Time  : 48.00 MHz ( period = 20.833 ns )
+Actual Time    : N/A
+From           : com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4|alt_counter_f10ke:wysi_counter|counter_cell[2]
+To             : com_controller:b2v_inst|lpm_counter:fifo_rx_waddr_rtl_4|alt_counter_f10ke:wysi_counter|counter_cell[2]
+From Clock     : I_CLK_DEV
+To Clock       : I_CLK_DEV
+Failed Paths   : 0
+
+Type           : Clock Hold: 'I_CLK'
+Slack          : 0.200 ns
+Required Time  : 33.00 MHz ( period = 30.303 ns )
+Actual Time    : N/A
+From           : com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5|alt_counter_f10ke:wysi_counter|counter_cell[0]
+To             : com_controller:b2v_inst|lpm_counter:fifo_rx_raddr_rtl_5|alt_counter_f10ke:wysi_counter|counter_cell[0]
+From Clock     : I_CLK
+To Clock       : I_CLK
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

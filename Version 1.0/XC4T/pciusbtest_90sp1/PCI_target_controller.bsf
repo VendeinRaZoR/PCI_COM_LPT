@@ -1,0 +1,792 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 16 16 264 1040)
+	(text "PCI_target_controller" (rect 5 0 108 12)(font "Arial" ))
+	(text "inst" (rect 8 1008 25 1020)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 1))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "cbe[3..0]" (rect 0 0 43 12)(font "Arial" ))
+		(text "cbe[3..0]" (rect 21 43 64 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "idsel" (rect 0 0 22 12)(font "Arial" ))
+		(text "idsel" (rect 21 59 43 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 1))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "frame" (rect 0 0 29 12)(font "Arial" ))
+		(text "frame" (rect 21 75 50 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 1))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "irdy" (rect 0 0 18 12)(font "Arial" ))
+		(text "irdy" (rect 21 91 39 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "reset" (rect 0 0 24 12)(font "Arial" ))
+		(text "reset" (rect 21 107 45 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 1))
+	)
+	(port
+		(pt 248 80)
+		(output)
+		(text "par" (rect 0 0 15 12)(font "Arial" ))
+		(text "par" (rect 212 75 227 87)(font "Arial" ))
+		(line (pt 248 80)(pt 232 80)(line_width 1))
+	)
+	(port
+		(pt 248 96)
+		(output)
+		(text "in_addr_offset_w_io[7..0]" (rect 0 0 125 12)(font "Arial" ))
+		(text "in_addr_offset_w_io[7..0]" (rect 102 91 227 103)(font "Arial" ))
+		(line (pt 248 96)(pt 232 96)(line_width 3))
+	)
+	(port
+		(pt 248 112)
+		(output)
+		(text "out_add_data_cs[31..0]" (rect 0 0 115 12)(font "Arial" ))
+		(text "out_add_data_cs[31..0]" (rect 112 107 227 119)(font "Arial" ))
+		(line (pt 248 112)(pt 232 112)(line_width 3))
+	)
+	(port
+		(pt 248 128)
+		(output)
+		(text "in_command[3..0]" (rect 0 0 88 12)(font "Arial" ))
+		(text "in_command[3..0]" (rect 139 123 227 135)(font "Arial" ))
+		(line (pt 248 128)(pt 232 128)(line_width 3))
+	)
+	(port
+		(pt 248 144)
+		(output)
+		(text "addr_data_buf_in_byte[7..0]" (rect 0 0 139 12)(font "Arial" ))
+		(text "addr_data_buf_in_byte[7..0]" (rect 88 139 227 151)(font "Arial" ))
+		(line (pt 248 144)(pt 232 144)(line_width 3))
+	)
+	(port
+		(pt 248 160)
+		(output)
+		(text "addr_data_buf_in_word[16..0]" (rect 0 0 145 12)(font "Arial" ))
+		(text "addr_data_buf_in_word[16..0]" (rect 82 155 227 167)(font "Arial" ))
+		(line (pt 248 160)(pt 232 160)(line_width 3))
+	)
+	(port
+		(pt 248 176)
+		(output)
+		(text "addr_data_buf_in_dword[32..0]" (rect 0 0 151 12)(font "Arial" ))
+		(text "addr_data_buf_in_dword[32..0]" (rect 76 171 227 183)(font "Arial" ))
+		(line (pt 248 176)(pt 232 176)(line_width 3))
+	)
+	(port
+		(pt 248 192)
+		(output)
+		(text "BAR0_DEVICE0_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR0_DEVICE0_configured" (rect 88 187 227 199)(font "Arial" ))
+		(line (pt 248 192)(pt 232 192)(line_width 1))
+	)
+	(port
+		(pt 248 208)
+		(output)
+		(text "BAR1_DEVICE0_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR1_DEVICE0_configured" (rect 88 203 227 215)(font "Arial" ))
+		(line (pt 248 208)(pt 232 208)(line_width 1))
+	)
+	(port
+		(pt 248 224)
+		(output)
+		(text "BAR2_DEVICE0_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR2_DEVICE0_configured" (rect 88 219 227 231)(font "Arial" ))
+		(line (pt 248 224)(pt 232 224)(line_width 1))
+	)
+	(port
+		(pt 248 240)
+		(output)
+		(text "BAR3_DEVICE0_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR3_DEVICE0_configured" (rect 88 235 227 247)(font "Arial" ))
+		(line (pt 248 240)(pt 232 240)(line_width 1))
+	)
+	(port
+		(pt 248 256)
+		(output)
+		(text "BAR4_DEVICE0_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR4_DEVICE0_configured" (rect 88 251 227 263)(font "Arial" ))
+		(line (pt 248 256)(pt 232 256)(line_width 1))
+	)
+	(port
+		(pt 248 272)
+		(output)
+		(text "BAR5_DEVICE0_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR5_DEVICE0_configured" (rect 88 267 227 279)(font "Arial" ))
+		(line (pt 248 272)(pt 232 272)(line_width 1))
+	)
+	(port
+		(pt 248 288)
+		(output)
+		(text "BAR0_DEVICE1_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR0_DEVICE1_configured" (rect 88 283 227 295)(font "Arial" ))
+		(line (pt 248 288)(pt 232 288)(line_width 1))
+	)
+	(port
+		(pt 248 304)
+		(output)
+		(text "BAR1_DEVICE1_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR1_DEVICE1_configured" (rect 88 299 227 311)(font "Arial" ))
+		(line (pt 248 304)(pt 232 304)(line_width 1))
+	)
+	(port
+		(pt 248 320)
+		(output)
+		(text "BAR2_DEVICE1_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR2_DEVICE1_configured" (rect 88 315 227 327)(font "Arial" ))
+		(line (pt 248 320)(pt 232 320)(line_width 1))
+	)
+	(port
+		(pt 248 336)
+		(output)
+		(text "BAR3_DEVICE1_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR3_DEVICE1_configured" (rect 88 331 227 343)(font "Arial" ))
+		(line (pt 248 336)(pt 232 336)(line_width 1))
+	)
+	(port
+		(pt 248 352)
+		(output)
+		(text "BAR4_DEVICE1_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR4_DEVICE1_configured" (rect 88 347 227 359)(font "Arial" ))
+		(line (pt 248 352)(pt 232 352)(line_width 1))
+	)
+	(port
+		(pt 248 368)
+		(output)
+		(text "BAR5_DEVICE1_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR5_DEVICE1_configured" (rect 88 363 227 375)(font "Arial" ))
+		(line (pt 248 368)(pt 232 368)(line_width 1))
+	)
+	(port
+		(pt 248 384)
+		(output)
+		(text "BAR0_DEVICE2_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR0_DEVICE2_configured" (rect 88 379 227 391)(font "Arial" ))
+		(line (pt 248 384)(pt 232 384)(line_width 1))
+	)
+	(port
+		(pt 248 400)
+		(output)
+		(text "BAR1_DEVICE2_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR1_DEVICE2_configured" (rect 88 395 227 407)(font "Arial" ))
+		(line (pt 248 400)(pt 232 400)(line_width 1))
+	)
+	(port
+		(pt 248 416)
+		(output)
+		(text "BAR2_DEVICE2_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR2_DEVICE2_configured" (rect 88 411 227 423)(font "Arial" ))
+		(line (pt 248 416)(pt 232 416)(line_width 1))
+	)
+	(port
+		(pt 248 432)
+		(output)
+		(text "BAR3_DEVICE2_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR3_DEVICE2_configured" (rect 88 427 227 439)(font "Arial" ))
+		(line (pt 248 432)(pt 232 432)(line_width 1))
+	)
+	(port
+		(pt 248 448)
+		(output)
+		(text "BAR4_DEVICE2_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR4_DEVICE2_configured" (rect 88 443 227 455)(font "Arial" ))
+		(line (pt 248 448)(pt 232 448)(line_width 1))
+	)
+	(port
+		(pt 248 464)
+		(output)
+		(text "BAR5_DEVICE2_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR5_DEVICE2_configured" (rect 88 459 227 471)(font "Arial" ))
+		(line (pt 248 464)(pt 232 464)(line_width 1))
+	)
+	(port
+		(pt 248 480)
+		(output)
+		(text "BAR0_DEVICE3_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR0_DEVICE3_configured" (rect 88 475 227 487)(font "Arial" ))
+		(line (pt 248 480)(pt 232 480)(line_width 1))
+	)
+	(port
+		(pt 248 496)
+		(output)
+		(text "BAR1_DEVICE3_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR1_DEVICE3_configured" (rect 88 491 227 503)(font "Arial" ))
+		(line (pt 248 496)(pt 232 496)(line_width 1))
+	)
+	(port
+		(pt 248 512)
+		(output)
+		(text "BAR2_DEVICE3_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR2_DEVICE3_configured" (rect 88 507 227 519)(font "Arial" ))
+		(line (pt 248 512)(pt 232 512)(line_width 1))
+	)
+	(port
+		(pt 248 528)
+		(output)
+		(text "BAR3_DEVICE3_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR3_DEVICE3_configured" (rect 88 523 227 535)(font "Arial" ))
+		(line (pt 248 528)(pt 232 528)(line_width 1))
+	)
+	(port
+		(pt 248 544)
+		(output)
+		(text "BAR4_DEVICE3_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR4_DEVICE3_configured" (rect 88 539 227 551)(font "Arial" ))
+		(line (pt 248 544)(pt 232 544)(line_width 1))
+	)
+	(port
+		(pt 248 560)
+		(output)
+		(text "BAR5_DEVICE3_configured" (rect 0 0 139 12)(font "Arial" ))
+		(text "BAR5_DEVICE3_configured" (rect 88 555 227 567)(font "Arial" ))
+		(line (pt 248 560)(pt 232 560)(line_width 1))
+	)
+	(port
+		(pt 248 576)
+		(output)
+		(text "control" (rect 0 0 33 12)(font "Arial" ))
+		(text "control" (rect 194 571 227 583)(font "Arial" ))
+		(line (pt 248 576)(pt 232 576)(line_width 1))
+	)
+	(port
+		(pt 248 592)
+		(output)
+		(text "is_config_space" (rect 0 0 80 12)(font "Arial" ))
+		(text "is_config_space" (rect 147 587 227 599)(font "Arial" ))
+		(line (pt 248 592)(pt 232 592)(line_width 1))
+	)
+	(port
+		(pt 248 608)
+		(output)
+		(text "is_BAR0_DEVICE0_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR0_DEVICE0_address" (rect 87 603 227 615)(font "Arial" ))
+		(line (pt 248 608)(pt 232 608)(line_width 1))
+	)
+	(port
+		(pt 248 624)
+		(output)
+		(text "is_BAR1_DEVICE0_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR1_DEVICE0_address" (rect 87 619 227 631)(font "Arial" ))
+		(line (pt 248 624)(pt 232 624)(line_width 1))
+	)
+	(port
+		(pt 248 640)
+		(output)
+		(text "is_BAR2_DEVICE0_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR2_DEVICE0_address" (rect 87 635 227 647)(font "Arial" ))
+		(line (pt 248 640)(pt 232 640)(line_width 1))
+	)
+	(port
+		(pt 248 656)
+		(output)
+		(text "is_BAR3_DEVICE0_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR3_DEVICE0_address" (rect 87 651 227 663)(font "Arial" ))
+		(line (pt 248 656)(pt 232 656)(line_width 1))
+	)
+	(port
+		(pt 248 672)
+		(output)
+		(text "is_BAR4_DEVICE0_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR4_DEVICE0_address" (rect 87 667 227 679)(font "Arial" ))
+		(line (pt 248 672)(pt 232 672)(line_width 1))
+	)
+	(port
+		(pt 248 688)
+		(output)
+		(text "is_BAR5_DEVICE0_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR5_DEVICE0_address" (rect 87 683 227 695)(font "Arial" ))
+		(line (pt 248 688)(pt 232 688)(line_width 1))
+	)
+	(port
+		(pt 248 704)
+		(output)
+		(text "is_BAR0_DEVICE1_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR0_DEVICE1_address" (rect 87 699 227 711)(font "Arial" ))
+		(line (pt 248 704)(pt 232 704)(line_width 1))
+	)
+	(port
+		(pt 248 720)
+		(output)
+		(text "is_BAR1_DEVICE1_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR1_DEVICE1_address" (rect 87 715 227 727)(font "Arial" ))
+		(line (pt 248 720)(pt 232 720)(line_width 1))
+	)
+	(port
+		(pt 248 736)
+		(output)
+		(text "is_BAR2_DEVICE1_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR2_DEVICE1_address" (rect 87 731 227 743)(font "Arial" ))
+		(line (pt 248 736)(pt 232 736)(line_width 1))
+	)
+	(port
+		(pt 248 752)
+		(output)
+		(text "is_BAR3_DEVICE1_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR3_DEVICE1_address" (rect 87 747 227 759)(font "Arial" ))
+		(line (pt 248 752)(pt 232 752)(line_width 1))
+	)
+	(port
+		(pt 248 768)
+		(output)
+		(text "is_BAR4_DEVICE1_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR4_DEVICE1_address" (rect 87 763 227 775)(font "Arial" ))
+		(line (pt 248 768)(pt 232 768)(line_width 1))
+	)
+	(port
+		(pt 248 784)
+		(output)
+		(text "is_BAR5_DEVICE1_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR5_DEVICE1_address" (rect 87 779 227 791)(font "Arial" ))
+		(line (pt 248 784)(pt 232 784)(line_width 1))
+	)
+	(port
+		(pt 248 800)
+		(output)
+		(text "is_BAR0_DEVICE2_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR0_DEVICE2_address" (rect 87 795 227 807)(font "Arial" ))
+		(line (pt 248 800)(pt 232 800)(line_width 1))
+	)
+	(port
+		(pt 248 816)
+		(output)
+		(text "is_BAR1_DEVICE2_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR1_DEVICE2_address" (rect 87 811 227 823)(font "Arial" ))
+		(line (pt 248 816)(pt 232 816)(line_width 1))
+	)
+	(port
+		(pt 248 832)
+		(output)
+		(text "is_BAR2_DEVICE2_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR2_DEVICE2_address" (rect 87 827 227 839)(font "Arial" ))
+		(line (pt 248 832)(pt 232 832)(line_width 1))
+	)
+	(port
+		(pt 248 848)
+		(output)
+		(text "is_BAR3_DEVICE2_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR3_DEVICE2_address" (rect 87 843 227 855)(font "Arial" ))
+		(line (pt 248 848)(pt 232 848)(line_width 1))
+	)
+	(port
+		(pt 248 864)
+		(output)
+		(text "is_BAR4_DEVICE2_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR4_DEVICE2_address" (rect 87 859 227 871)(font "Arial" ))
+		(line (pt 248 864)(pt 232 864)(line_width 1))
+	)
+	(port
+		(pt 248 880)
+		(output)
+		(text "is_BAR5_DEVICE2_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR5_DEVICE2_address" (rect 87 875 227 887)(font "Arial" ))
+		(line (pt 248 880)(pt 232 880)(line_width 1))
+	)
+	(port
+		(pt 248 896)
+		(output)
+		(text "is_BAR0_DEVICE3_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR0_DEVICE3_address" (rect 87 891 227 903)(font "Arial" ))
+		(line (pt 248 896)(pt 232 896)(line_width 1))
+	)
+	(port
+		(pt 248 912)
+		(output)
+		(text "is_BAR1_DEVICE3_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR1_DEVICE3_address" (rect 87 907 227 919)(font "Arial" ))
+		(line (pt 248 912)(pt 232 912)(line_width 1))
+	)
+	(port
+		(pt 248 928)
+		(output)
+		(text "is_BAR2_DEVICE3_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR2_DEVICE3_address" (rect 87 923 227 935)(font "Arial" ))
+		(line (pt 248 928)(pt 232 928)(line_width 1))
+	)
+	(port
+		(pt 248 944)
+		(output)
+		(text "is_BAR3_DEVICE3_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR3_DEVICE3_address" (rect 87 939 227 951)(font "Arial" ))
+		(line (pt 248 944)(pt 232 944)(line_width 1))
+	)
+	(port
+		(pt 248 960)
+		(output)
+		(text "is_BAR4_DEVICE3_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR4_DEVICE3_address" (rect 87 955 227 967)(font "Arial" ))
+		(line (pt 248 960)(pt 232 960)(line_width 1))
+	)
+	(port
+		(pt 248 976)
+		(output)
+		(text "is_BAR5_DEVICE3_address" (rect 0 0 140 12)(font "Arial" ))
+		(text "is_BAR5_DEVICE3_address" (rect 87 971 227 983)(font "Arial" ))
+		(line (pt 248 976)(pt 232 976)(line_width 1))
+	)
+	(port
+		(pt 248 32)
+		(bidir)
+		(text "addr_data[31..0]" (rect 0 0 80 12)(font "Arial" ))
+		(text "addr_data[31..0]" (rect 147 27 227 39)(font "Arial" ))
+		(line (pt 248 32)(pt 232 32)(line_width 3))
+	)
+	(port
+		(pt 248 48)
+		(bidir)
+		(text "devsel" (rect 0 0 33 12)(font "Arial" ))
+		(text "devsel" (rect 194 43 227 55)(font "Arial" ))
+		(line (pt 248 48)(pt 232 48)(line_width 1))
+	)
+	(port
+		(pt 248 64)
+		(bidir)
+		(text "trdy" (rect 0 0 20 12)(font "Arial" ))
+		(text "trdy" (rect 207 59 227 71)(font "Arial" ))
+		(line (pt 248 64)(pt 232 64)(line_width 1))
+	)
+	(parameter
+		"CS_RESET"
+		"0"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_IDLE"
+		"1"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_READ"
+		"2"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_VIDPID_WRITE_DEVICE0"
+		"18"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_STATUSCOMMAND_WRITE_DEVICE0"
+		"19"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_CLASSCODE_WRITE_DEVICE0"
+		"20"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BIST_HEADER_LAT_CACH_WRITE_DEVICE0"
+		"21"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR0_WRITE_DEVICE0"
+		"22"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR1_WRITE_DEVICE0"
+		"23"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR2_WRITE_DEVICE0"
+		"24"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR3_WRITE_DEVICE0"
+		"25"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR4_WRITE_DEVICE0"
+		"26"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR5_WRITE_DEVICE0"
+		"27"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_CARDBUS_WRITE_DEVICE0"
+		"28"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_SUBSYSTEM_VENDOR_WRITE_DEVICE0"
+		"29"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_EXPANSION_ROM_BAR_WRITE_DEVICE0"
+		"30"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_CAP_POINTER_WRITE_DEVICE0"
+		"31"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_LAT_INTERRUPT_WRITE_DEVICE0"
+		"32"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_VIDPID_WRITE_DEVICE1"
+		"50"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_STATUSCOMMAND_WRITE_DEVICE1"
+		"51"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_CLASSCODE_WRITE_DEVICE1"
+		"52"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BIST_HEADER_LAT_CACH_WRITE_DEVICE1"
+		"53"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR0_WRITE_DEVICE1"
+		"54"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR1_WRITE_DEVICE1"
+		"55"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR2_WRITE_DEVICE1"
+		"56"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR3_WRITE_DEVICE1"
+		"57"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR4_WRITE_DEVICE1"
+		"58"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_BAR5_WRITE_DEVICE1"
+		"59"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_CARDBUS_WRITE_DEVICE1"
+		"60"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_SUBSYSTEM_VENDOR_WRITE_DEVICE1"
+		"61"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_EXPANSION_ROM_BAR_WRITE_DEVICE1"
+		"62"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_CAP_POINTER_WRITE_DEVICE1"
+		"63"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_LAT_INTERRUPT_WRITE_DEVICE1"
+		"64"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_NULL"
+		"125"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"CS_RESERVED"
+		"126"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"INT_PIN_DEVICE0"
+		"00000000000000000000001000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"INT_PIN_DEVICE1"
+		"00000000000000000000000100000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"INT_PIN_DEVICE2"
+		"00000000000000000000001100000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"INT_PIN_DEVICE3"
+		"00000000000000000000010000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"STATUS_MASK_DEVICE0"
+		"0000001010001000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"STATUS_MASK_DEVICE1"
+		"0000001010001000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"STATUS_MASK_DEVICE2"
+		"0000001010001000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"STATUS_MASK_DEVICE3"
+		"0000001010001000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"COMMAND_MASK_DEVICE0"
+		"0000000000000011"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"COMMAND_MASK_DEVICE1"
+		"0000000000000011"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"COMMAND_MASK_DEVICE2"
+		"0000000000000011"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"COMMAND_MASK_DEVICE3"
+		"0000000000000011"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"TRDY_DELAY"
+		"0"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"MULTIFUNCTIONAL_DEVICE0"
+		"00000000100000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"MULTIFUNCTIONAL_DEVICE1"
+		"00000000100000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"MULTIFUNCTIONAL_DEVICE2"
+		"00000000100000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"MULTIFUNCTIONAL_DEVICE3"
+		"00000000100000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"VIDPID_DEVICE0"
+		"11011110101011011011111011101111"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"CLASSCODE_DEVICE0"
+		"00001100000000110000000001010000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"VIDPID_DEVICE1"
+		"01010000010100110100001101001000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"CLASSCODE_DEVICE1"
+		"00000111000000000000001000001111"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"VIDPID_DEVICE2"
+		"00000000000000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"CLASSCODE_DEVICE2"
+		"00000000000000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"VIDPID_DEVICE3"
+		"00000000000000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"CLASSCODE_DEVICE3"
+		"00000000000000000000000000000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(drawing
+		(rectangle (rect 16 16 232 1008)(line_width 1))
+	)
+	(annotation_block (parameter)(rect 264 -64 364 16))
+)

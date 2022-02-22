@@ -1,0 +1,9 @@
+Analysis & Synthesis Status : Successful - Fri Feb 18 00:06:40 2022
+Quartus II Version : 9.0 Build 235 06/17/2009 SP 2 SJ Web Edition
+Revision Name : pci_com_lpt_usb_eth
+Top-level Entity Name : pci_com_lpt_usb_eth
+Family : FLEX10KE
+Total logic elements : 1,168
+Total pins : 57
+Total memory bits : 128
+Total PLLs : 0

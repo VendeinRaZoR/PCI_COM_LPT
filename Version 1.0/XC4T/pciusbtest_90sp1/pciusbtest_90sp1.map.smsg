@@ -1,0 +1,7 @@
+Warning (10273): Verilog HDL warning at pci_io.v(35): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at pci_io.v(42): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at lpt_controller.v(183): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at lpt_controller.v(184): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at pci_controller.v(328): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at pci_controller.v(329): extended using "x" or "z"
+Warning (10268): Verilog HDL information at pci_controller.v(677): always construct contains both blocking and non-blocking assignments

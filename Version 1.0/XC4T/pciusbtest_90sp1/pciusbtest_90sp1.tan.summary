@@ -1,0 +1,96 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 36.600 ns
+From           : irdy
+To             : COM_controller_16C550:b2v_inst9|com_state.COMF_IDLE
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 36.100 ns
+From           : COM_controller_16C550:b2v_inst9|FIFO_RX_COM1_int_trigger_int_flag
+To             : inta
+From Clock     : baudclk_221184kHz
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 20.000 ns
+From           : irdy
+To             : devsel
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : 0.300 ns
+From           : CTS
+To             : COM_controller_16C550:b2v_inst9|CTS_COM1[0]
+From Clock     : --
+To Clock       : baudclk_221184kHz
+Failed Paths   : 0
+
+Type           : Clock Setup: 'baudclk_221184kHz'
+Slack          : -5.884 ns
+Required Time  : 96.01 MHz ( period = 10.416 ns )
+Actual Time    : 61.35 MHz ( period = 16.300 ns )
+From           : COM_controller_16C550:b2v_inst9|TSR_COM1[4]
+To             : COM_controller_16C550:b2v_inst9|TSR_COM1[6]
+From Clock     : baudclk_221184kHz
+To Clock       : baudclk_221184kHz
+Failed Paths   : 838
+
+Type           : Clock Setup: 'clk'
+Slack          : -0.997 ns
+Required Time  : 33.00 MHz ( period = 30.303 ns )
+Actual Time    : 31.95 MHz ( period = 31.300 ns )
+From           : PCI_target_controller:b2v_inst4|BASE_ADDRESS_0_DEVICE1[11]
+To             : COM_controller_16C550:b2v_inst9|com_state.COMF_IDLE
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 4
+
+Type           : Clock Hold: 'baudclk_221184kHz'
+Slack          : -5.100 ns
+Required Time  : 96.01 MHz ( period = 10.416 ns )
+Actual Time    : N/A
+From           : COM_controller_16C550:b2v_inst9|RX_input[0]
+To             : COM_controller_16C550:b2v_inst9|RSR_COM1[10]
+From Clock     : baudclk_221184kHz
+To Clock       : baudclk_221184kHz
+Failed Paths   : 12
+
+Type           : Clock Hold: 'clk'
+Slack          : 0.100 ns
+Required Time  : 33.00 MHz ( period = 30.303 ns )
+Actual Time    : N/A
+From           : PCI_target_controller:b2v_inst4|cs_state.CS_LAT_INTERRUPT_WRITE_DEVICE1
+To             : PCI_target_controller:b2v_inst4|INTERUPT_PIN_LINE_DEVICE1[1]
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 854
+
+--------------------------------------------------------------------------------------
+

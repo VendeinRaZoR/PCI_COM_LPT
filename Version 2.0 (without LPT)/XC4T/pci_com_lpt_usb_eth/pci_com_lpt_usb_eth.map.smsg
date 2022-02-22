@@ -1,0 +1,4 @@
+Warning (10273): Verilog HDL warning at pci_controller.v(133): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at pci_controller.v(134): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at com_controller.v(134): extended using "x" or "z"
+Warning (10273): Verilog HDL warning at com_controller.v(135): extended using "x" or "z"

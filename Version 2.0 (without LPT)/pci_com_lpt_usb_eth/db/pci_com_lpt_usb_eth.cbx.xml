@@ -1,6 +1,0 @@
-<?xml version="1.0" ?>
-<LOG_ROOT>
-	<PROJECT NAME="pci_com_lpt_usb_eth">
-		<CBX_INST_ENTRY INSTANCE_NAME="|pci_com_lpt_usb_eth|alt_pll:b2v_inst5|altpll:altpll_component" CBX_FILE_NAME="alt_pll_altpll.v"/>
-	</PROJECT>
-</LOG_ROOT>

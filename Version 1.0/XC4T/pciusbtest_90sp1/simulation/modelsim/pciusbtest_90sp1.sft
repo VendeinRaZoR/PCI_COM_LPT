@@ -1,0 +1,4 @@
+set tool_name "ModelSim-Altera (Verilog)"
+set corner_file_list {
+	{{"Slow Model"} {pciusbtest_90sp1.vo pciusbtest_90sp1_v.sdo}}
+}
